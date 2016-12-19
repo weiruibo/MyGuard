@@ -3,6 +3,7 @@
     package="cn.edu.gdmec.w07150837.myguard">
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -19,5 +20,6 @@
 
         </activity>
     </application>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
 
 </manifest>
