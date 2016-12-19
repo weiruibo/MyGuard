@@ -65,7 +65,6 @@ public class VersionUpdateUtils {
                     Intent intent = new Intent(context, HomeActivity.class);
                     context.startActivity(intent);
                     context.finish();
-
                     break;
 
             }
