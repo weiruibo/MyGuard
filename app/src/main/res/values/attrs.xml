@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AdvancedToolsView">
+        <attr name="desc" format="string"></attr>
+        <attr name="android:src"></attr>
+    </declare-styleable>
+    <declare-styleable name="MyCircleProgress">
+        <attr name="progress" format="integer"></attr>
+        <attr name="max" format="integer"></attr>
+        <attr name="circleColor" format="integer"></attr>
+        <attr name="progressColor" format="color"></attr>
+        <attr name="android:background"></attr>
+    </declare-styleable>
+    <declare-styleable name="SettingView">
+        <attr name="settitle" format="string"></attr>
+        <attr name="status_on" format="string"></attr>
+        <attr name="status_off" format="string"></attr>
+        <attr name="status_ischecked" format="boolean"></attr>
+    </declare-styleable>
+</resources>
