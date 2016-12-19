@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cn.edu.gdmec.w07150837.myguard">
 
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -16,10 +18,38 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SplashActivity">
+        <activity android:name=".SplashActivity" />
+        <activity android:name=".m2theftguard.BaseSetUpActivity" />
+        <activity android:name=".m2theftguard.ContactSelectActivity" />
+        <activity android:name=".m2theftguard.LostFindActivity" />
+        <activity android:name=".m2theftguard.SetUp1Activity" />
+        <activity android:name=".m2theftguard.SetUp2Activity" />
+        <activity android:name=".m2theftguard.SetUp3Activity" />
+        <activity android:name=".m2theftguard.SetUp4Activity" />
+        <activity android:name=".m2theftguard.entity.ContactInfo" />
+        <activity android:name=".m2theftguard.adapter.ContactAdapter" />
+        <activity android:name=".m2theftguard.utils.ContactInfoParser" />
+        <activity android:name=".m2theftguard.utils.MD5Utils" />
+        <activity android:name=".m2theftguard.dialog.InterPasswordDialog" />
+        <activity android:name=".m2theftguard.dialog.SetUpPasswordDialog" />
 
-        </activity>
+        <service
+            android:name=".m2theftguard.service.GPSLocationService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <receiver
+            android:name=".m2theftguard.receiver.BootCompleteReciever"
+            android:enabled="true"
+            android:exported="true" />
+        <receiver
+            android:name=".m2theftguard.receiver.MyDeviceAdminReciever"
+            android:enabled="true"
+            android:exported="true" />
+        <receiver
+            android:name=".m2theftguard.receiver.SmsLostFindReciver"
+            android:enabled="true"
+            android:exported="true"></receiver>
     </application>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
 
 </manifest>
