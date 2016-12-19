@@ -12,9 +12,11 @@ import java.io.File;
  */
 
 public class DownloadUtils {
-    public  void downapk(String url,String tragerFile,final MyCallBack myCallBack){
+
+    
+    public void downapk(String url, String tragerFile, final MyCallBack myCallBack) {
         HttpUtils httpUtils = new HttpUtils();
-        httpUtils.download(url,tragerFile,new RequestCallBack<File>(){
+        httpUtils.download(url, tragerFile, new RequestCallBack<File>() {
             @Override
             public void onSuccess(ResponseInfo<File> arg0) {
                 myCallBack.onSuccess(arg0);
@@ -22,7 +24,7 @@ public class DownloadUtils {
 
             @Override
             public void onFailure(HttpException arg0, String arg1) {
-              myCallBack.onFailure(arg0,arg1);
+                myCallBack.onFailure(arg0, arg1);
             }
 
             @Override
@@ -33,8 +35,11 @@ public class DownloadUtils {
         });
     }
 }
-interface  MyCallBack{
+
+interface MyCallBack {
     void onSuccess(ResponseInfo<File> arg0);
-    void onFailure(HttpException arg0,String arg1);
-    void onLoading(long total,long current,boolean isUploading);
+
+    void onFailure(HttpException arg0, String arg1);
+
+    void onLoading(long total, long current, boolean isUploading);
 }
