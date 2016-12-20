@@ -33,27 +33,25 @@
             android:textScaleX="1.1"
             android:textSize="16sp"
             android:typeface="normal" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <GridView
-                android:id="@+id/gv_home"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:cacheColorHint="#00000000"
-                android:gravity="center"
-                android:horizontalSpacing="10dp"
-                android:numColumns="3"
-                android:verticalSpacing="10dp">
-
-            </GridView>
-        </RelativeLayout>
-
     </LinearLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <GridView
+            android:id="@+id/gv_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:cacheColorHint="#00000000"
+            android:gravity="center"
+            android:horizontalSpacing="10dp"
+            android:numColumns="3"
+            android:verticalSpacing="10dp">
+
+        </GridView>
+    </RelativeLayout>
 </LinearLayout>

@@ -4,7 +4,6 @@ import android.app.admin.DevicePolicyManager;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -17,21 +16,30 @@ import android.widget.Toast;
 
 import cn.edu.gdmec.w07150837.myguard.R;
 import cn.edu.gdmec.w07150837.myguard.m1home.adapter.HomeAdapter;
+import cn.edu.gdmec.w07150837.myguard.m2theftguard.dialog.SetUpPasswordDialog;
+import cn.edu.gdmec.w07150837.myguard.m2theftguard.receiver.MyDeviceAdminReciever;
 
 public class HomeActivity extends AppCompatActivity {
 
     private GridView gv_home;
+
     private SharedPreferences msharedPreferences;
+
     private DevicePolicyManager policyManager;
+
     private ComponentName componentName;
+
     private long mExitTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_home);
+
         msharedPreferences = getSharedPreferences("config", MODE_PRIVATE);
+
         gv_home = (GridView) findViewById(R.id.gv_home);
         gv_home.setAdapter(new HomeAdapter(HomeActivity.this));
         gv_home.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -39,7 +47,7 @@ public class HomeActivity extends AppCompatActivity {
                 switch (position) {
                     case 0:
                         if (isSetUpPassword()) {
-                            // showInterPswdDialog();
+                          //  showInterPswdDialog();
                         } else {
                             //showSetUpPswdDialog();
                         }
@@ -72,7 +80,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
         policyManager = (DevicePolicyManager) getSystemService(DEVICE_POLICY_SERVICE);
-        //  componentName=new ComponentName(this,MyDeviceAdminReciever.class);
+        componentName = new ComponentName(this, MyDeviceAdminReciever.class);
         boolean active = policyManager.isAdminActive(componentName);
         if (!active) {
             Intent intent = new Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN);
@@ -83,34 +91,36 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    /*private void showSetUpPswdDialog(){
-        final SetUpPasswordDialog SetUpPasswordDialog=new SetUpPasswordDialog(HomeActivity.this);
-        SetUpPasswordDialog.setCallBack(new SetUpPasswordDialog.MyCallBack(){
+    /*private void showSetUpPswdDialog() {
+        final SetUpPasswordDialog setUpPasswordDialo = new SetUpPasswordDialog(HomeActivity.this);
+        setUpPasswordDialo.setCallBack(new SetUpPasswordDialog.MyCallBack() {
             @Override
-            public void ok(){
-                String firstPwsd=SetUpPasswordDialog.mFirstPWDET.getText().toString().trim();
-                String affirmPwsd=SetUpPasswordDialog.mAffirmET.getText().toString().trim();
-                if (!TextUtils.isEmpty(firstPwsd)&&!TextUtils.isEmpty(firstPwsd)){
-                    if (firstPwsd.equals(affirmPwsd)){
+            public void ok() {
+                String firstPwsd = SetUpPasswordDialog.mFirstPWDET.getText().toString().trim();
+                String affirmPwsd = SetUpPasswordDialog.mAffirmET.getText().toString().trim();
+                if (!TextUtils.isEmpty(firstPwsd) && !TextUtils.isEmpty(firstPwsd)) {
+                    if (firstPwsd.equals(affirmPwsd)) {
                         savePswd(affirmPwsd);
                         setUpPasswordDialog.dismiss();
                         showInterPswdDialog();
-                    }else{
-                        Toast.makeText(HomeActivity.this,"两次密码不一致!",0).show();
+                    } else {
+                        Toast.makeText(HomeActivity.this, "两次密码不一致!", 0).show();
                     }
-                }else{
-                    Toast.makeText(HomeActivity.this,"密码不能为空!",0).show();
+                } else {
+                    Toast.makeText(HomeActivity.this, "密码不能为空!", 0).show();
                 }
             }
+
             @Override
-            public void cancle(){
+            public void cancle() {
                 SetUpPasswordDialog.dismiss();
             }
         });
         setUpPasswordDialog.setCancelable(true);
         setUpPasswordDialog.show();
     }
-8*/
+*/
+
     /*private void showInterPswdDialog(){
         final String password=getPassword();
         final IntentPasswordDialog mInPswdDialog=new IntentPasswordDialog(HomeActivity.this);

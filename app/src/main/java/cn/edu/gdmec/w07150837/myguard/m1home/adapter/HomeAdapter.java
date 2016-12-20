@@ -15,9 +15,9 @@ import cn.edu.gdmec.w07150837.myguard.R;
 
 public class HomeAdapter extends BaseAdapter {
     int[] imageId = {R.drawable.safe,
-            R.drawable.callmsgsafe, R.drawable.trojan, R.drawable.sysoptimize, R.drawable.taskmanager, R.drawable.netmanager, R.drawable.atools,
-            R.drawable.settings
-    };
+            R.drawable.callmsgsafe, R.drawable.app, R.drawable.trojan, R.drawable.sysoptimize,
+            R.drawable.taskmanager, R.drawable.netmanager, R.drawable.atools,
+            R.drawable.settings};
     String[] names = {"手机防盗", "通讯卫士", "软件管家", "手机杀毒", "缓存清理", "进程管理",
             "流量统计", "高级工具", "设置中心"};
     private Context context;
