@@ -13,6 +13,7 @@ import android.telephony.SmsMessage;
 import android.text.TextUtils;
 import android.util.Log;
 
+
 import cn.edu.gdmec.w07150837.myguard.R;
 import cn.edu.gdmec.w07150837.myguard.m2theftguard.service.GPSLocationService;
 
