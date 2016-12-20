@@ -15,6 +15,7 @@ public abstract class BaseSetUpActivity extends AppCompatActivity {
 
     public SharedPreferences sp;
     private GestureDetector mGestureDetector;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,14 +41,18 @@ public abstract class BaseSetUpActivity extends AppCompatActivity {
             }
         });
     }
+
     public abstract void showNext();
+
     public abstract void showPre();
-    public boolean onTouchEvent(MotionEvent event){
+
+    public boolean onTouchEvent(MotionEvent event) {
         mGestureDetector.onTouchEvent(event);
         return super.onTouchEvent(event);
     }
-    public void startActivityAndFinishSelf(Class<?>cls) {
-        Intent intent= new Intent(this,cls);
+
+    public void startActivityAndFinishSelf(Class<?> cls) {
+        Intent intent = new Intent(this, cls);
         startActivity(intent);
         finish();
     }

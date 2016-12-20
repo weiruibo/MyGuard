@@ -16,7 +16,6 @@ import android.widget.Toast;
 
 import cn.edu.gdmec.w07150837.myguard.R;
 import cn.edu.gdmec.w07150837.myguard.m1home.adapter.HomeAdapter;
-import cn.edu.gdmec.w07150837.myguard.m2theftguard.dialog.SetUpPasswordDialog;
 import cn.edu.gdmec.w07150837.myguard.m2theftguard.receiver.MyDeviceAdminReciever;
 
 public class HomeActivity extends AppCompatActivity {
@@ -47,7 +46,7 @@ public class HomeActivity extends AppCompatActivity {
                 switch (position) {
                     case 0:
                         if (isSetUpPassword()) {
-                          //  showInterPswdDialog();
+                            //  showInterPswdDialog();
                         } else {
                             //showSetUpPswdDialog();
                         }

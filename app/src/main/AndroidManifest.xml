@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cn.edu.gdmec.w07150837.myguard">
-
+    #m1
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    #m2
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
 
     <application
         android:name=".App"
@@ -19,19 +26,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".SplashActivity" />
-        <activity android:name=".m2theftguard.BaseSetUpActivity" />
         <activity android:name=".m2theftguard.ContactSelectActivity" />
         <activity android:name=".m2theftguard.LostFindActivity" />
         <activity android:name=".m2theftguard.SetUp1Activity" />
         <activity android:name=".m2theftguard.SetUp2Activity" />
         <activity android:name=".m2theftguard.SetUp3Activity" />
         <activity android:name=".m2theftguard.SetUp4Activity" />
-        <activity android:name=".m2theftguard.entity.ContactInfo" />
-        <activity android:name=".m2theftguard.adapter.ContactAdapter" />
         <activity android:name=".m2theftguard.utils.ContactInfoParser" />
-        <activity android:name=".m2theftguard.utils.MD5Utils" />
-        <activity android:name=".m2theftguard.dialog.InterPasswordDialog" />
-        <activity android:name=".m2theftguard.dialog.SetUpPasswordDialog" />
 
         <service
             android:name=".m2theftguard.service.GPSLocationService"
@@ -41,15 +42,42 @@
         <receiver
             android:name=".m2theftguard.receiver.BootCompleteReciever"
             android:enabled="true"
-            android:exported="true" />
-        <receiver
-            android:name=".m2theftguard.receiver.MyDeviceAdminReciever"
-            android:enabled="true"
-            android:exported="true" />
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+
+            </intent-filter>
+
+        </receiver>
+
+
         <receiver
             android:name=".m2theftguard.receiver.SmsLostFindReciver"
             android:enabled="true"
-            android:exported="true"></receiver>
+            android:exported="true">
+            <intent-filter android:priority="2147483647">
+                <action android:name="android.provider.Telephone.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+
+
+        <receiver
+            android:name=".m2theftguard.receiver.MyDeviceAdminReciever"
+            android:description="@string/sample_device_admin_description"
+            android:enabled="true"
+            android:exported="true"
+            android:label="@string/sample_device_admin"
+            android:permission="android.permission.BIND_DEVICE_ADMIN">
+            <meta-data
+                android:name="android.app.device_admin"
+                android:resource="@xml/device_admin_sample" />
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+
+        </receiver>
+
     </application>
 
 </manifest>
