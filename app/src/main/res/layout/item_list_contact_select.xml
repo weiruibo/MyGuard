@@ -28,3 +28,5 @@
         android:layout_toRightOf="@+id/view1"
         android:textColor="@color/purple" />
 </RelativeLayout>
+
+
