@@ -36,7 +36,6 @@
         <activity android:name=".m2theftguard.SetUp2Activity" />
         <activity android:name=".m2theftguard.SetUp3Activity" />
         <activity android:name=".m2theftguard.SetUp4Activity" />
-        <activity android:name=".m2theftguard.utils.ContactInfoParser" />
 
         <service
             android:name=".m2theftguard.service.GPSLocationService"

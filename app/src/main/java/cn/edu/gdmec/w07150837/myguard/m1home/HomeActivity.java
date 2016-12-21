@@ -16,7 +16,11 @@ import android.widget.Toast;
 
 import cn.edu.gdmec.w07150837.myguard.R;
 import cn.edu.gdmec.w07150837.myguard.m1home.adapter.HomeAdapter;
+import cn.edu.gdmec.w07150837.myguard.m2theftguard.LostFindActivity;
+import cn.edu.gdmec.w07150837.myguard.m2theftguard.dialog.InterPasswordDialog;
+import cn.edu.gdmec.w07150837.myguard.m2theftguard.dialog.SetUpPasswordDialog;
 import cn.edu.gdmec.w07150837.myguard.m2theftguard.receiver.MyDeviceAdminReciever;
+import cn.edu.gdmec.w07150837.myguard.m2theftguard.utils.MD5Utils;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -46,9 +50,9 @@ public class HomeActivity extends AppCompatActivity {
                 switch (position) {
                     case 0:
                         if (isSetUpPassword()) {
-                            //  showInterPswdDialog();
+                            showInterPswdDialog();
                         } else {
-                            //showSetUpPswdDialog();
+                            showSetUpPswdDialog();
                         }
                         break;
                     case 1:
@@ -90,62 +94,72 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    /*private void showSetUpPswdDialog() {
-        final SetUpPasswordDialog setUpPasswordDialo = new SetUpPasswordDialog(HomeActivity.this);
-        setUpPasswordDialo.setCallBack(new SetUpPasswordDialog.MyCallBack() {
+    private void showSetUpPswdDialog() {
+        final SetUpPasswordDialog setUpPasswordDialog = new SetUpPasswordDialog(HomeActivity.this);
+        setUpPasswordDialog.setCallBack(new SetUpPasswordDialog.MyCallBack() {
             @Override
             public void ok() {
-                String firstPwsd = SetUpPasswordDialog.mFirstPWDET.getText().toString().trim();
-                String affirmPwsd = SetUpPasswordDialog.mAffirmET.getText().toString().trim();
-                if (!TextUtils.isEmpty(firstPwsd) && !TextUtils.isEmpty(firstPwsd)) {
+                String firstPwsd = setUpPasswordDialog.mFirstPWDET.getText().toString().trim();
+                String affirmPwsd = setUpPasswordDialog.mAffirmET.getText().toString().trim();
+
+
+                if (!TextUtils.isEmpty(firstPwsd) && !TextUtils.isEmpty(affirmPwsd)) {
+
                     if (firstPwsd.equals(affirmPwsd)) {
+
                         savePswd(affirmPwsd);
                         setUpPasswordDialog.dismiss();
                         showInterPswdDialog();
                     } else {
-                        Toast.makeText(HomeActivity.this, "两次密码不一致!", 0).show();
+                        Toast.makeText(HomeActivity.this, "两次密码不一致!", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(HomeActivity.this, "密码不能为空!", 0).show();
+                    Toast.makeText(HomeActivity.this, "密码不能为空!", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void cancle() {
-                SetUpPasswordDialog.dismiss();
+                setUpPasswordDialog.dismiss();
             }
         });
         setUpPasswordDialog.setCancelable(true);
         setUpPasswordDialog.show();
     }
-*/
 
-    /*private void showInterPswdDialog(){
-        final String password=getPassword();
-        final IntentPasswordDialog mInPswdDialog=new IntentPasswordDialog(HomeActivity.this);
-        mInPswdDialog.setCallBack(new interPasswordDialog.MyCallBack(){
-           @Override
-            public void confirm(){
-               if(TextUtils.isEmpty(mInPswdDialog.egtPassword())){
-                   Toast.makeText(HomeActivity.this,"密码不能为空!",0).show();
-               }else if (password.equals(MD5Utils.encode(mInPswdDialog.getPassword()))){
-                   mInPswdDialog.dismiss();
-                   startActivity(LostFindActivity.class);
-               }else{
-                   mInPswdDialog.dismiss();
-                   Toast.makeText(HomeActivity.this,"密码有误,请重新输入!",0).show();
-               }
-           }
+    private void showInterPswdDialog() {
+
+        final String password = getPassword();
+        final InterPasswordDialog mInPswdDialog = new InterPasswordDialog(HomeActivity.this);
+
+        mInPswdDialog.setCallBack(new InterPasswordDialog.MyCallBack() {
             @Override
-            public void cancle(){
+            public void confirm() {
+                if (TextUtils.isEmpty(mInPswdDialog.getPassword())) {
+                    Toast.makeText(HomeActivity.this, "密码不能为空!", Toast.LENGTH_SHORT).show();
+                } else if (password.equals(MD5Utils.encode(mInPswdDialog.getPassword()))) {
+
+                    mInPswdDialog.dismiss();
+                    startActivity(LostFindActivity.class);
+                } else {
+                    mInPswdDialog.dismiss();
+                    Toast.makeText(HomeActivity.this, "密码有误,请重新输入!", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void cancle() {
                 mInPswdDialog.dismiss();
             }
         });
+
         mInPswdDialog.setCancelable(true);
         mInPswdDialog.show();
-    }*/
+    }
+
     private void savePswd(String affirmPwsd) {
         SharedPreferences.Editor edit = msharedPreferences.edit();
+        edit.putString("PhoneAntiTheftPWD",MD5Utils.encode(affirmPwsd));
         edit.commit();
     }
 

@@ -13,36 +13,42 @@ import cn.edu.gdmec.w07150837.myguard.R;
 
 public class SetUpPasswordDialog extends Dialog implements View.OnClickListener {
     private TextView mTitleTV;
-    private EditText mFirstPWDET;
+    public EditText mFirstPWDET;
     public EditText mAffirmET;
     private MyCallBack myCallBack;
+
     public SetUpPasswordDialog(Context context) {
-        super(context,R.style.dialog_custom);
+        super(context, R.style.dialog_custom);
     }
-    public void setCallBack(MyCallBack myCallBack){
+
+    public void setCallBack(MyCallBack myCallBack) {
         this.myCallBack = myCallBack;
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setup_password_dialog);
         initView();
     }
-    public void initView(){
+
+    public void initView() {
         mTitleTV = (TextView) findViewById(R.id.tv_interpwd_title);
         mFirstPWDET = (EditText) findViewById(R.id.et_firstpwd);
         mAffirmET = (EditText) findViewById(R.id.et_affirm_password);
         findViewById(R.id.btn_ok).setOnClickListener(this);
         findViewById(R.id.btn_cancle).setOnClickListener(this);
     }
-    public void setTitle(String title){
+
+    public void setTitle(String title) {
         if (!TextUtils.isEmpty(title)) {
             mTitleTV.setText(title);
         }
     }
+
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.btn_ok:
                 myCallBack.ok();
                 break;
@@ -51,8 +57,10 @@ public class SetUpPasswordDialog extends Dialog implements View.OnClickListener 
                 break;
         }
     }
-    public interface MyCallBack{
+
+    public interface MyCallBack {
         void ok();
+
         void cancle();
     }
 }
