@@ -9,7 +9,8 @@ import android.widget.TextView;
 import java.util.List;
 
 import cn.edu.gdmec.w07150837.myguard.R;
-import cn.edu.gdmec.w07150837.myguard.m2theftguard.entity.ContactInfo;
+import cn.edu.gdmec.w07150837.myguard.m3communicationguard.entity.ContactInfo;
+
 
 /**
  * Created by weiruibo on 12/20/16.
