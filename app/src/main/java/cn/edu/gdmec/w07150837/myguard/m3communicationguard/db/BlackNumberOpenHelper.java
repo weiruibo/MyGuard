@@ -12,7 +12,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class BlackNumberOpenHelper extends SQLiteOpenHelper {
 
     public BlackNumberOpenHelper(Context context) {
-        super(context,"blackNumber.db",null,1);
+        super(context, "blackNumber.db", null, 1);
     }
 
     @Override

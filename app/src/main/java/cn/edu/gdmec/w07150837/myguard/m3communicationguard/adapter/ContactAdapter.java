@@ -15,15 +15,16 @@ import cn.edu.gdmec.w07150837.myguard.m2theftguard.entity.ContactInfo;
  * Created by weiruibo on 12/20/16.
  */
 
-public class ContactAdapter extends BaseAdapter{
-    private List<ContactInfo>contactInfos;
+public class ContactAdapter extends BaseAdapter {
+    private List<ContactInfo> contactInfos;
     private Context context;
 
-    public ContactAdapter(List<ContactInfo> systemContacts,Context context){
+    public ContactAdapter(List<ContactInfo> systemContacts, Context context) {
         super();
         this.contactInfos = systemContacts;
         this.context = context;
     }
+
     @Override
     public int getCount() {
         return contactInfos.size();
@@ -42,14 +43,15 @@ public class ContactAdapter extends BaseAdapter{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
-        if(convertView == null){
-         //这里报错---   convertView = View.inflate(context, android.R.layout.item_list_contact_select,null);
+        if (convertView == null) {
+            //这里报错---
+             convertView = View.inflate(context, R.layout.item_list_contact_select,null);
             holder = new ViewHolder();
-          //这里报错----  holder.mNameTV = (TextView) convertView.findViewById(R.id.tv_name);
-           // holder.mphone = (TextView)convertView.findViewById(R.id.tv_phone);
+            //这里报错----  holder.mNameTV = (TextView) convertView.findViewById(R.id.tv_name);
+            // holder.mphone = (TextView)convertView.findViewById(R.id.tv_phone);
             holder.mContactImgv = convertView.findViewById(R.id.view1);
             convertView.setTag(holder);
-        }else {
+        } else {
             holder = (ViewHolder) convertView.getTag();
         }
 //  这里报错---      holder.mNameTV.setText(contactInfos.get(position).name);
@@ -58,7 +60,8 @@ public class ContactAdapter extends BaseAdapter{
 //        holder.mContactImgv.setBackgrondResource(R.drawable.brightpurple_contact_icon);
         return convertView;
     }
-    static class ViewHolder{
+
+    static class ViewHolder {
         TextView mName;
         TextView mPhone;
         View mContactImgv;
