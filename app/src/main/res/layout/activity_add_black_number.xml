@@ -10,7 +10,7 @@
     <include layout="@layout/titlebar" />
 
     <EditText
-        android:id="@+id/et_backnumber"
+        android:id="@+id/et_balcknumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
@@ -71,7 +71,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/add_black_btn"
+        android:id="@+id/add_blacknum_btn"
         android:layout_width="170dp"
         android:layout_height="40dp"
         android:layout_gravity="center_horizontal"
