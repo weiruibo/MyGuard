@@ -36,15 +36,15 @@ public class GPSLocationService extends Service {
         String name = lm.getBestProvider(criteria, true);
         System.out.println("最好的位置提供者" + name);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) !=
-                PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
-//            TODO:Consider calling
-            //ActivityCompat#requestPermissions
-            //here to request this missing permissions,and then overrding
-            //public void onRequestPermissionsResult(int requestCode,String[] permissoions,
-            //                                       int[] grantResults)
-            //to handle the case where the user grants this permissions.See the documentation
-            //for ActivityCompat#requestsPermissions for more details.
+                PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider callings
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
             return;
         }
         lm.requestLocationUpdates(name, 0, 0, listener);
@@ -66,6 +66,7 @@ public class GPSLocationService extends Service {
 
             stopSelf();
         }
+
 
         //当位置提供者 状态发生变化的时候调用的方法
         @Override
@@ -90,7 +91,7 @@ public class GPSLocationService extends Service {
     public void onDestroy() {
         super.onDestroy();
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider callings
+            // TODO: Consider calling
             //    ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
             //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
@@ -100,7 +101,7 @@ public class GPSLocationService extends Service {
             return;
         }
         lm.removeUpdates(listener);
-        listener=null;
+        listener = null;
 
     }
 }
