@@ -27,6 +27,6 @@ public class SetUp1Activity extends BaseSetUpActivity {
 
     @Override
     public void showPre() {
-        // Toast.makeText(this,"当前页面已经是第一页",0).show();
+         Toast.makeText(this,"当前页面已经是第一页",Toast.LENGTH_SHORT).show();
     }
 }
