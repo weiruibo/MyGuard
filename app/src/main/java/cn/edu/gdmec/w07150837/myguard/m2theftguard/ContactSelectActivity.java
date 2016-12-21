@@ -53,7 +53,7 @@ public class ContactSelectActivity extends AppCompatActivity implements View.OnC
         mLeftImgv.setImageResource(R.drawable.back);
         findViewById(R.id.r1_titlebar).setBackgroundColor(
                 getResources().getColor(R.color.purple));
-        mListView.findViewById(R.id.lv_contact);
+        mListView= (ListView) findViewById(R.id.lv_contact);
         new Thread() {
             public void run() {
                 systemContacts = ContactInfoParser.getSystemContact(ContactSelectActivity.this);

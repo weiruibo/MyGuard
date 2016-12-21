@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 
 public class MyDeviceAdminReciever extends DeviceAdminReceiver {
-    public MyDeviceAdminReciever() {
-    }
 
     @Override
     public void onReceive(Context context, Intent intent) {

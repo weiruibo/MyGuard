@@ -52,14 +52,6 @@
             </intent-filter>
         </receiver>
         <receiver
-            android:name=".m2theftguard.receiver.SmsLostFindReciver"
-            android:enabled="true"
-            android:exported="true">
-            <intent-filter android:priority="2147483647">
-                <action android:name="android.provider.Telephone.SMS_RECEIVED" />
-            </intent-filter>
-        </receiver>
-        <receiver
             android:name=".m2theftguard.receiver.MyDeviceAdminReciever"
             android:description="@string/sample_device_admin_description"
             android:enabled="true"
@@ -69,9 +61,17 @@
             <meta-data
                 android:name="android.app.device_admin"
                 android:resource="@xml/device_admin_sample" />
-
             <intent-filter>
                 <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name=".m2theftguard.receiver.SmsLostFindReciver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter android:priority="2147483647">
+                <action android:name="android.provider.Telephone.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
 
