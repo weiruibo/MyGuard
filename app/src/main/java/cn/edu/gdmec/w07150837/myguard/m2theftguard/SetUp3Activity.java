@@ -13,6 +13,7 @@ import android.widget.Toast;
 import cn.edu.gdmec.w07150837.myguard.R;
 
 public class SetUp3Activity extends BaseSetUpActivity implements View.OnClickListener {
+
     private EditText mInputPhone;
 
     @Override
@@ -34,7 +35,9 @@ public class SetUp3Activity extends BaseSetUpActivity implements View.OnClickLis
 
     @Override
     public void showNext() {
+
         String safePhone = mInputPhone.getText().toString().trim();
+
         if (TextUtils.isEmpty(safePhone)) {
             Toast.makeText(this, "请输入安全号码", Toast.LENGTH_SHORT).show();
             return;
