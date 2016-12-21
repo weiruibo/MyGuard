@@ -18,9 +18,11 @@ public abstract class BaseSetUpActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         sp = getSharedPreferences("config", MODE_PRIVATE);
+
         mGestureDetector = new GestureDetector(this, new GestureDetector.SimpleOnGestureListener() {
             public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
                 if (Math.abs(velocityX) < 200) {
