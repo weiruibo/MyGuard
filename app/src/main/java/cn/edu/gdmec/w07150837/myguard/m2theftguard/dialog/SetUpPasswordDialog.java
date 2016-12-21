@@ -13,7 +13,7 @@ import cn.edu.gdmec.w07150837.myguard.R;
 
 public class SetUpPasswordDialog extends Dialog implements View.OnClickListener {
     private TextView mTitleTV;
-    private EditText mFirstPWDET;
+    public EditText mFirstPWDET;
     public EditText mAffirmET;
     private MyCallBack myCallBack;
 
