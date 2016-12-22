@@ -54,8 +54,8 @@ public class CacheClearListActivity extends AppCompatActivity implements View.On
                     mRecomandTV.setText("正在扫描:" + info.packageName);
                     mCanCleanTV.setText("已扫描缓存:" + Formatter.formatFileSize
                             (CacheClearListActivity.this,
-                            cacheMemory
-                    ));
+                                    cacheMemory
+                            ));
                     mCacheInfos.clear();
                     mCacheInfos.addAll(cacheInfos);
                     adapter.notifyDataSetChanged();
@@ -90,8 +90,8 @@ public class CacheClearListActivity extends AppCompatActivity implements View.On
 
 
     private void intiView() {
-        //    findViewById(R.id.rl_titlebar).setBackgroundColor(getResources().getColor(R.color
-        // .rose_red));
+        findViewById(R.id.r1_titlebar).setBackgroundColor(getResources().getColor(R.color
+                .rose_red));
         ImageView mLeftImgv = (ImageView) findViewById(R.id.imgv_leftbtn);
         mLeftImgv.setOnClickListener(this);
         mLeftImgv.setImageResource(R.drawable.back);

@@ -56,20 +56,20 @@ public class ScanVirusAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         ScanAppInfo scanAppInfo = mScanAppInfos.get(position);
-//        if (!scanAppInfo.isVirus) {
-//            holder.mScanIconImgv.setBcakgroundResource(R.drawable.blue_right_icon);
-//            holder.mAppNameTV.setTextColor(context.getResources().getColor(R.color.black));
-//            holder.mAppNameTV.setText(scanAppInfo.appName);
-//        } else {
-//            holder.mAppNameTV.setTextColor(context.getResources().getColor(R.color.bright_red));
-//            holder.mAppNameTV.setText(scanAppInfo.appName + "(" + scanAppInfo.description + ")");
-//        }
-//        holder.mAppIconImgv.setImageDrawable(scanAppInfo.appicon);
+        if (!scanAppInfo.isVirus) {
+            holder.mScanIconImgv.setBackgroundResource(R.drawable.blue_right_icon);
+            holder.mAppNameTV.setTextColor(context.getResources().getColor(R.color.black));
+            holder.mAppNameTV.setText(scanAppInfo.appName);
+        } else {
+            holder.mAppNameTV.setTextColor(context.getResources().getColor(R.color.bright_red));
+            holder.mAppNameTV.setText(scanAppInfo.appName + "(" + scanAppInfo.description + ")");
+        }
+        holder.mAppIconImgv.setImageDrawable(scanAppInfo.appicon);
         return convertView;
     }
 
 
-    static class ViewHolder{
+    static class ViewHolder {
         ImageView mAppIconImgv;
         TextView mAppNameTV;
         ImageView mScanIconImgv;

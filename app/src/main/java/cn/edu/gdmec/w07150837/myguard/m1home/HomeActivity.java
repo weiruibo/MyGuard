@@ -23,6 +23,8 @@ import cn.edu.gdmec.w07150837.myguard.m2theftguard.receiver.MyDeviceAdminRecieve
 import cn.edu.gdmec.w07150837.myguard.m2theftguard.utils.MD5Utils;
 import cn.edu.gdmec.w07150837.myguard.m3communicationguard.SecurityPhoneActivity;
 import cn.edu.gdmec.w07150837.myguard.m4appmanager.AppManagerActivity;
+import cn.edu.gdmec.w07150837.myguard.m5virusscan.VirusScanActivity;
+import cn.edu.gdmec.w07150837.myguard.m6cleancache.CacheClearListActivity;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -64,10 +66,11 @@ public class HomeActivity extends AppCompatActivity {
                         startActivity(AppManagerActivity.class);
                         break;
                     case 3:
-                        //      startActivity(VirusScanActivity.class);
+                        startActivity(VirusScanActivity.class);
+
                         break;
                     case 4:
-                        //      startActivity(CacheClearListActivity.class);
+                        startActivity(CacheClearListActivity.class);
                         break;
                     case 5:
                         //     startActivity(ProcessManagerActivity.class);
