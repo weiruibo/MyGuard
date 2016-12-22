@@ -10,6 +10,7 @@ import android.os.RemoteException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.format.Formatter;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.FrameLayout;
@@ -27,14 +28,20 @@ public class CleanCacheActivity extends AppCompatActivity implements View.OnClic
 
     protected static final int CLEANNING = 100;
     protected static final int CLEAN_FINISH = 10;
+
     private AnimationDrawable animation;
     private long cacheMemory;
+
     private TextView mMemoryTV;
     private TextView mMemoryUnitTV;
+
     private PackageManager pm;
+
     private FrameLayout mCleanCacheFL;
     private FrameLayout mFinishCleanFL;
+
     private TextView mSizeTV;
+
     private Handler mHandler = new Handler() {
 
         public void handleMessage(Message msg) {
@@ -76,7 +83,6 @@ public class CleanCacheActivity extends AppCompatActivity implements View.OnClic
         new Thread() {
             @Override
             public void run() {
-                super.run();
                 long memory = 0;
                 while (memory < cacheMemory) {
                     try {
@@ -162,16 +168,18 @@ public class CleanCacheActivity extends AppCompatActivity implements View.OnClic
     class ClearCacheObserver extends android.content.pm.IPackageDataObserver.Stub {
 
         @Override
-        public void onRemoveCompleted(final String packageName, final boolean succeeded) throws
-                RemoteException {
+        public void onRemoveCompleted(final String packageName, final boolean succeeded) {
 
         }
     }
 
 
     private void cleanAll() {
+        Log.d("test", "cleanAll启动");
         Method[] methods = PackageManager.class.getMethods();
+
         for (Method method : methods) {
+            Log.d("test", method.getName());
             if ("freeStorageAndNotify".equals(method.getName())) {
                 try {
                     method.invoke(pm, Integer.MAX_VALUE, new ClearCacheObserver());

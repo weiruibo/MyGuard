@@ -11,7 +11,6 @@ import android.os.Message;
 import android.os.RemoteException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.ListViewCompat;
 import android.text.format.Formatter;
 import android.view.View;
 import android.view.Window;
@@ -25,7 +24,6 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import cn.edu.gdmec.w07150837.myguard.R;
 import cn.edu.gdmec.w07150837.myguard.m6cleancache.adapter.CacheCleanAdapter;
 import cn.edu.gdmec.w07150837.myguard.m6cleancache.entity.CacheInfo;
@@ -35,6 +33,7 @@ public class CacheClearListActivity extends AppCompatActivity implements View.On
 
     protected static final int SCANNING = 100;
     protected static final int FINISH = 101;
+
     private AnimationDrawable animation;
     private TextView mRecomandTV;
     private TextView mCanCleanTV;
@@ -58,6 +57,7 @@ public class CacheClearListActivity extends AppCompatActivity implements View.On
                             ));
                     mCacheInfos.clear();
                     mCacheInfos.addAll(cacheInfos);
+                    //listView刷新
                     adapter.notifyDataSetChanged();
                     mCacheLV.setSelection(mCacheInfos.size());
                     break;
@@ -134,6 +134,7 @@ public class CacheClearListActivity extends AppCompatActivity implements View.On
             }
 
             ;
+
         };
         thread.start();
     }
@@ -167,7 +168,7 @@ public class CacheClearListActivity extends AppCompatActivity implements View.On
             case R.id.btn_cleanall:
                 if (cacheMemory > 0) {
                     Intent intent = new Intent(this, CleanCacheActivity.class);
-                    intent.putExtra("cachaMemory", cacheMemory);
+                    intent.putExtra("cacheMemory", cacheMemory);
                     startActivity(intent);
                     finish();
                 }
@@ -190,7 +191,9 @@ public class CacheClearListActivity extends AppCompatActivity implements View.On
             if (cachesize >= 0) {
                 CacheInfo cacheInfo = new CacheInfo();
                 cacheInfo.cacheSize = cachesize;
-                cacheInfo.packagename = info.applicationInfo.loadLabel(pm).toString();
+                cacheInfo.packagename = info.packageName;
+                cacheInfo.appName = info.applicationInfo.loadLabel(pm).toString();
+
                 cacheInfo.appIcon = info.applicationInfo.loadIcon(pm);
                 cacheInfos.add(cacheInfo);
                 cacheMemory += cachesize;
