@@ -90,7 +90,6 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
 
     }
 
-
     @Override
     public void onClick(View view) {
 
