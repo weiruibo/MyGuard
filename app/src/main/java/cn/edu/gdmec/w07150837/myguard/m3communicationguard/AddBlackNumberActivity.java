@@ -67,15 +67,19 @@ public class AddBlackNumberActivity extends AppCompatActivity implements View.On
                     return;
 
                 } else {
+                    //电话和号码都不为空
                     BlackContactInfo blackContactInfo = new BlackContactInfo();
                     blackContactInfo.phoneNumber = number;
                     blackContactInfo.contactNmae = name;
                     if (mSmsCB.isChecked() & mTelCB.isChecked()) {
+                        //两种拦截模式
                         blackContactInfo.mode = 3;
 
                     } else if (mSmsCB.isChecked() & !mTelCB.isChecked()) {
+                        //短信拦截
                         blackContactInfo.mode = 2;
                     } else if (!mSmsCB.isChecked() & mTelCB.isChecked()) {
+                        //电话拦截
                         blackContactInfo.mode = 1;
                     } else {
                         Toast.makeText(this, "请选择拦截模式", Toast.LENGTH_SHORT).show();
@@ -88,6 +92,7 @@ public class AddBlackNumberActivity extends AppCompatActivity implements View.On
                         Toast.makeText(this, "该号码已经被添加至黑名单", Toast.LENGTH_SHORT).show();
                     }
                     finish();
+
                 }
 
                 break;

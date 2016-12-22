@@ -32,7 +32,6 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/coner_white_rec"
         android:hint="请输入名称"
-        android:inputType="phone"
         android:paddingLeft="5dp"
         android:textColor="@color/bright_purple"
         android:textSize="16sp" />
