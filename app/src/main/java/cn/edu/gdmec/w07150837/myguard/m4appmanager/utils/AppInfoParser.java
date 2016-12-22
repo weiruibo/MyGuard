@@ -36,10 +36,9 @@ public class AppInfoParser {
             appInfo.icon = icon;
 
             String appname = packageInfo.applicationInfo.loadLabel(pm).toString();
-
             appInfo.appName = appname;
             //应用程序apk包的路径
-            String apkpath = packageInfo.applicationInfo.loadLabel(pm).toString();
+            String apkpath = packageInfo.applicationInfo.sourceDir;
             appInfo.apkPath = apkpath;
 
             File file = new File(apkpath);

@@ -59,7 +59,7 @@ public class EngineUtils {
 
     public static void SettingAppDetail(Context context, AppInfo appInfo) {
         Intent intent = new Intent();
-        intent.setAction("andorid.settings.APPLICATION_DETAILS_SETTINGS");
+        intent.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
         intent.addCategory(Intent.CATEGORY_DEFAULT);
         //dat=package:com.itheima.mobileguard
         intent.setData(Uri.parse("package:" + appInfo.packageName));
@@ -73,7 +73,7 @@ public class EngineUtils {
     public static void uninstallApplication(Context context, AppInfo appInfo) {
         if (appInfo.isUserApp) {
             Intent intent = new Intent();
-            intent.setAction(Intent.ACTION_DEFAULT);
+            intent.setAction(Intent.ACTION_DELETE);
             intent.setData(Uri.parse("package:" + appInfo.packageName));
             context.startActivity(intent);
         } else {
