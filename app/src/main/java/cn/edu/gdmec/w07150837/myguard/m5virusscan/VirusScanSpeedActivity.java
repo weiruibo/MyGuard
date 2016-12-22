@@ -94,7 +94,7 @@ public class VirusScanSpeedActivity extends AppCompatActivity implements View.On
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
-    private GoogleApiClient client;
+//    private GoogleApiClient client;
 
 
     @Override
@@ -109,7 +109,7 @@ public class VirusScanSpeedActivity extends AppCompatActivity implements View.On
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+        //client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
     private void scanVirus() {
