@@ -21,6 +21,7 @@ public class SmsLostFindReciver extends BroadcastReceiver {
     private static final String TAG = SmsLostFindReciver.class.getSimpleName();
     private SharedPreferences sharedPreferences;
     private ComponentName componentName;
+    private MediaPlayer player = null;
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -54,9 +55,15 @@ public class SmsLostFindReciver extends BroadcastReceiver {
                         abortBroadcast();
                     } else if ("#*alarm*#".equals(body)) {
                         Log.i(TAG, "播放报警音乐");
-                        MediaPlayer player = MediaPlayer.create(context, R.raw.ylzs);
-                        player.setVolume(1.0f, 1.0f);
-                        player.start();
+                        //MediaPlayer start方法调用后必须reset后才能再次调用start方法播放音乐
+                        if (player == null) {
+                            player = MediaPlayer.create(context, R.raw.ylzs);
+                            player.setVolume(1.0f, 1.0f);
+                            player.start();
+                        } else {
+                            player.reset();
+                            player.start();
+                        }
                         abortBroadcast();
                     } else if ("#*wipedata*#".equals(body)) {
                         Log.i(TAG, "远程清除数据");

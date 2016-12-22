@@ -45,26 +45,25 @@ public class ContactAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
         if (convertView == null) {
-            //这里报错---
-             convertView = View.inflate(context, R.layout.item_list_contact_select,null);
+            convertView = View.inflate(context, R.layout.item_list_contact_select, null);
             holder = new ViewHolder();
-            //这里报错----  holder.mNameTV = (TextView) convertView.findViewById(R.id.tv_name);
-            // holder.mphone = (TextView)convertView.findViewById(R.id.tv_phone);
+            holder.mNameTV = (TextView) convertView.findViewById(R.id.tv_name);
+            holder.mPhoneTV = (TextView) convertView.findViewById(R.id.tv_phone);
             holder.mContactImgv = convertView.findViewById(R.id.view1);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-//  这里报错---      holder.mNameTV.setText(contactInfos.get(position).name);
-//        holder.mPhoneTV.setTextColor(context.getResources().getColor(R.color.bright_purple));
-//        holder.mPhoneTV.setTextColor(context.getResources().getColor(R.color.bright_purple));
-//        holder.mContactImgv.setBackgrondResource(R.drawable.brightpurple_contact_icon);
+        holder.mNameTV.setText(contactInfos.get(position).name);
+        holder.mPhoneTV.setTextColor(context.getResources().getColor(R.color.bright_purple));
+        holder.mPhoneTV.setTextColor(context.getResources().getColor(R.color.bright_purple));
+        holder.mContactImgv.setBackgroundResource(R.drawable.brightpurple_contact_icon);
         return convertView;
     }
 
     static class ViewHolder {
-        TextView mName;
-        TextView mPhone;
+        TextView mNameTV;
+        TextView mPhoneTV;
         View mContactImgv;
     }
 }

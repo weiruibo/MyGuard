@@ -21,6 +21,7 @@ import cn.edu.gdmec.w07150837.myguard.m2theftguard.dialog.InterPasswordDialog;
 import cn.edu.gdmec.w07150837.myguard.m2theftguard.dialog.SetUpPasswordDialog;
 import cn.edu.gdmec.w07150837.myguard.m2theftguard.receiver.MyDeviceAdminReciever;
 import cn.edu.gdmec.w07150837.myguard.m2theftguard.utils.MD5Utils;
+import cn.edu.gdmec.w07150837.myguard.m3communicationguard.SecurityPhoneActivity;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -56,7 +57,7 @@ public class HomeActivity extends AppCompatActivity {
                         }
                         break;
                     case 1:
-                        //    startActivity(SecurityPhoneActivity.class);
+                        startActivity(SecurityPhoneActivity.class);
                         break;
                     case 2:
                         //    startActivity(AppManagerActivity.class);
@@ -159,7 +160,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private void savePswd(String affirmPwsd) {
         SharedPreferences.Editor edit = msharedPreferences.edit();
-        edit.putString("PhoneAntiTheftPWD",MD5Utils.encode(affirmPwsd));
+        edit.putString("PhoneAntiTheftPWD", MD5Utils.encode(affirmPwsd));
         edit.commit();
     }
 
