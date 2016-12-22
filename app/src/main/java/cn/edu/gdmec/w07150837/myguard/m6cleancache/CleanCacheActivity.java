@@ -182,7 +182,7 @@ public class CleanCacheActivity extends AppCompatActivity implements View.OnClic
             Log.d("test", method.getName());
             if ("freeStorageAndNotify".equals(method.getName())) {
                 try {
-                    method.invoke(pm, Integer.MAX_VALUE, new ClearCacheObserver());
+                    method.invoke(pm, Long.MAX_VALUE, new ClearCacheObserver());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
