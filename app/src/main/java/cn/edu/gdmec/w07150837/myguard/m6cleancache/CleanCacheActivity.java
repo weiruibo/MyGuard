@@ -186,7 +186,7 @@ public class CleanCacheActivity extends AppCompatActivity implements View.OnClic
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                return;
+//                return;
             }
         }
         Toast.makeText(this, "清理完毕", Toast.LENGTH_SHORT).show();

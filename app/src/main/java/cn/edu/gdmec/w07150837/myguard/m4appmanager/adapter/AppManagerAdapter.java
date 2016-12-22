@@ -70,6 +70,7 @@ public class AppManagerAdapter extends BaseAdapter {
         if (position == 0) {
             TextView tv = getTextView();
             tv.setText("用户程序:" + UserAppInfos.size() + "个");
+            tv.setClickable(false);
             return tv;
         } else if (position == (UserAppInfos.size() + 1)) {
             TextView tv = getTextView();

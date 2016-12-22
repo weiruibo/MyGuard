@@ -79,7 +79,7 @@ public class VersionUpdateUtils {
     private ProgressDialog mProgressDialog;
     private VersionEntity versionEntity;
 
-    private VersionUpdateUtils(String Version, Activity activity) {
+    public VersionUpdateUtils(String Version, Activity activity) {
         mVersion = Version;
         context = activity;
     }
