@@ -114,7 +114,25 @@
             android:value="@integer/google_play_services_version" />
 
         <activity android:name=".m7processmanager.ProcessManagerActivity" />
-        <activity android:name=".m7processmanager.ProcessManagerSettingActivity"></activity>
+        <activity android:name=".m7processmanager.ProcessManagerSettingActivity" />
+
+        <service
+            android:name=".m7processmanager.service.AutoKillProcessService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".m8trafficmonitor.OperatorSetActivity" />
+        <activity android:name=".m8trafficmonitor.TrafficMonitoringActivity" />
+
+        <service
+            android:name=".m8trafficmonitor.service.TrafficMonitoringService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <receiver
+            android:name=".m8trafficmonitor.receiver.BootCompleteReciever"
+            android:enabled="true"
+            android:exported="true"></receiver>
     </application>
 
 </manifest>
