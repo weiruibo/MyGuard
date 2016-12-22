@@ -22,6 +22,7 @@ import cn.edu.gdmec.w07150837.myguard.m2theftguard.dialog.SetUpPasswordDialog;
 import cn.edu.gdmec.w07150837.myguard.m2theftguard.receiver.MyDeviceAdminReciever;
 import cn.edu.gdmec.w07150837.myguard.m2theftguard.utils.MD5Utils;
 import cn.edu.gdmec.w07150837.myguard.m3communicationguard.SecurityPhoneActivity;
+import cn.edu.gdmec.w07150837.myguard.m4appmanager.AppManagerActivity;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -60,7 +61,7 @@ public class HomeActivity extends AppCompatActivity {
                         startActivity(SecurityPhoneActivity.class);
                         break;
                     case 2:
-                        //    startActivity(AppManagerActivity.class);
+                        startActivity(AppManagerActivity.class);
                         break;
                     case 3:
                         //      startActivity(VirusScanActivity.class);
