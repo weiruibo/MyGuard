@@ -18,6 +18,10 @@
     #m6
     <uses-permission android:name="android.permission.GET_PACKAGE_SIZE" />
     <uses-permission android:name="android.permission.CLEAR_APP_CACHE" />
+    #9
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.WRITE_SMS" />
 
     <application
         android:name=".App"
@@ -26,7 +30,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".m1home.HomeActivity"></activity>
+        <activity android:name=".m1home.HomeActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -141,7 +145,20 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".m9advancedtools.AdvancedToolsActivity"></activity>
+        <activity android:name=".m9advancedtools.AdvancedToolsActivity" />
+        <activity android:name=".m9advancedtools.AppLockActivity" />
+        <activity android:name=".m9advancedtools.EnterPswActivity" />
+        <activity android:name=".m9advancedtools.NumBelongtoActivity" />
+        <activity android:name=".m9advancedtools.SMSBackupActivity" />
+        <activity android:name=".m9advancedtools.SMSReducitionActivity" />
+
+        <service
+            android:name=".m9advancedtools.service.AppLockService"
+            android:enabled="true"
+            android:exported="true"
+            android:persistent="true" />
+
+        <activity android:name=".m10settings.SettingsActivity"></activity>
     </application>
 
 </manifest>
