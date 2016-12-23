@@ -3,6 +3,10 @@ package cn.edu.gdmec.w07150837.myguard.m8trafficmonitor.receiver;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
+
+import cn.edu.gdmec.w07150837.myguard.m8trafficmonitor.service.TrafficMonitoringService;
+import cn.edu.gdmec.w07150837.myguard.m8trafficmonitor.utils.SystemInfoUtils;
 
 public class BootCompleteReciever extends BroadcastReceiver {
     public BootCompleteReciever() {
@@ -10,8 +14,10 @@ public class BootCompleteReciever extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        // TODO: This method is called when the BroadcastReceiver is receiving
-        // an Intent broadcast.
-        throw new UnsupportedOperationException("Not yet implemented");
+        if (!SystemInfoUtils.isServiceRunning(context, "cn.edu.gdmec.w07150837.myguard" +
+                ".m8trafficmonitor.servic.TrafficMonitoringService")) {
+            Log.d("traffic service", "turn on");
+            context.startService(new Intent(context, TrafficMonitoringService.class));
+        }
     }
 }
