@@ -25,6 +25,7 @@ import cn.edu.gdmec.w07150837.myguard.m3communicationguard.SecurityPhoneActivity
 import cn.edu.gdmec.w07150837.myguard.m4appmanager.AppManagerActivity;
 import cn.edu.gdmec.w07150837.myguard.m5virusscan.VirusScanActivity;
 import cn.edu.gdmec.w07150837.myguard.m6cleancache.CacheClearListActivity;
+import cn.edu.gdmec.w07150837.myguard.m7processmanager.ProcessManagerActivity;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -73,7 +74,7 @@ public class HomeActivity extends AppCompatActivity {
                         startActivity(CacheClearListActivity.class);
                         break;
                     case 5:
-                        //     startActivity(ProcessManagerActivity.class);
+                             startActivity(ProcessManagerActivity.class);
                         break;
                     case 6:
                         //    startActivity(TrafficMonitoringActivity.class);

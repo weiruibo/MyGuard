@@ -22,14 +22,16 @@ import static cn.edu.gdmec.w07150837.myguard.R.id.info;
 public class SystemInfoUtils {
 
 
-    /*判断一个服务是否处理运行状态
-        @param context 上下文
-        @return*/
-    /*public static boolean isServiceRunning(Context context, String className) {
+    /**
+     * 判断一个服务是否处理运行状态
+     *
+     * @param context 上下文
+     * @return
+     */
+    public static boolean isServiceRunning(Context context, String className) {
         ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
         List<ActivityManager.RunningServiceInfo> infos = am.getRunningServices(200);
-        for (ActivityManager.RunningServiceInfo Info:infos){
-            !*//*!!!!!!!!!*//*
+        for (ActivityManager.RunningServiceInfo info : infos) {
             String serviceClassName = info.service.getClassName();
             if (className.equals(serviceClassName)) {
                 return true;
@@ -37,10 +39,13 @@ public class SystemInfoUtils {
         }
         return false;
 
-    }*/
+    }
 
-    /*获取手机的总内存大小,单位byte
-    @return*/
+    /**
+     * 获取手机的总内存大小,单位byte
+     *
+     * @return
+     */
     public static long getTotalMem() {
         try {
             FileInputStream fis = new FileInputStream(new File("/proc/meminfo"));
@@ -60,24 +65,28 @@ public class SystemInfoUtils {
             return 0;
         }
     }
-        public static long getAvailMem(Context context){
-            ActivityManager am=(ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
-            //获取内存大小
-            ActivityManager.MemoryInfo outInfo=new ActivityManager.MemoryInfo();
-            am.getMemoryInfo(outInfo);
-            long availMem=outInfo.availMem;
-            return availMem;
-        }
-    /*得到正在运行的进程的数量
-    @param context
-    @return*/
-    public static int getRunningPocessCount(Context context){
-        ActivityManager am=(ActivityManager)context.getSystemService(Context.ACTIVITY_SERVICE);
-        List<ActivityManager.RunningAppProcessInfo> runningAppProcessInfos=am.getRunningAppProcesses();
-        int count=runningAppProcessInfos.size();
-        return count;
+
+    public static long getAvailMem(Context context) {
+        ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        //获取内存大小
+        ActivityManager.MemoryInfo outInfo = new ActivityManager.MemoryInfo();
+        am.getMemoryInfo(outInfo);
+        long availMem = outInfo.availMem;
+        return availMem;
     }
 
+    /**
+     * 得到正在运行的进程的数量
+     *
+     * @param context
+     * @return
+     */
+    public static int getRunningPocessCount(Context context) {
+        ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningAppProcessInfo> runningAppProcessInfos = am.getRunningAppProcesses();
+        int count = runningAppProcessInfos.size();
+        return count;
+    }
 
 
 }

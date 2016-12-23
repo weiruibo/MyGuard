@@ -23,6 +23,7 @@ import cn.edu.gdmec.w07150837.myguard.m7processmanager.entity.TaskInfo;
  */
 
 public class ProcessManagerAdapter extends BaseAdapter {
+
     private Context context;
     private List<TaskInfo> mUsertaskInfos;
     private List<TaskInfo> mSystaskInfos;
