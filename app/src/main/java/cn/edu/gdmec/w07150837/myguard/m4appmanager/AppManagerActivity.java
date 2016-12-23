@@ -101,6 +101,8 @@ public class AppManagerActivity extends AppCompatActivity implements View.OnClic
                 if (adapter != null) {
                     new Thread() {
                         public void run() {
+                            // adapter.getItem 位置为0和userAppInfos.size() + 1 时
+                            // 返回的是null 故取不到AppInfo对象点击时就会报错
                             if (position != 0 && position != userAppInfos.size() + 1) {
                                 AppInfo mappInfo = (AppInfo) adapter.getItem(position);
                                 boolean flag = mappInfo.isSelected;

@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.lidroid.xutils.exception.HttpException;
@@ -90,11 +91,13 @@ public class VersionUpdateUtils {
             HttpConnectionParams.setConnectionTimeout(client.getParams(), 5000);
             HttpConnectionParams.setSoTimeout(client.getParams(), 5000);
 
-            HttpGet httpGet = new HttpGet("http://172.16.25.14:8080/updateinfo.html");
+            HttpGet httpGet = new HttpGet("http://localhost/updateinfo.html");
             HttpResponse execute = client.execute(httpGet);
             if (execute.getStatusLine().getStatusCode() == 200) {
+
                 HttpEntity entity = execute.getEntity();
                 String result = EntityUtils.toString(entity, "gbk");
+                Log.d("update",result+"");
                 JSONObject jsonObject = new JSONObject(result);
                 versionEntity = new VersionEntity();
                 String code = jsonObject.getString("code");

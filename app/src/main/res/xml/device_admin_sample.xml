@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<device-admin>
 
-</PreferenceScreen>
+    <uses-policies>
+
+        <reset-password />
+        <force-lock />
+        <wipe-data />
+    </uses-policies>
+
+</device-admin>

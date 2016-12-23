@@ -56,19 +56,24 @@ public class BlackContactAdapter extends BaseAdapter {
         if (convertView == null) {
             convertView = View.inflate(context, R.layout.item_list_blackcontact, null);
             holder = new ViewHolder();
+
             holder.mNameTV = (TextView) convertView.findViewById(R.id.tv_black_name);
             holder.mModeTV = (TextView) convertView.findViewById(R.id.tv_black_mode);
+
             holder.mContactImgv = convertView.findViewById(R.id.view_black_icon);
             holder.mDeleteView = convertView.findViewById(R.id.view_black_delete);
+
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.mNameTV.setText(contactInfos.get(position).contactNmae + "(" + contactInfos.get(position).phoneNumber + ")");
 
+        holder.mNameTV.setText(contactInfos.get(position).contactNmae + "(" + contactInfos.get(position).phoneNumber + ")");
         holder.mModeTV.setText(contactInfos.get(position).getModeString(contactInfos.get(position).mode));
+
         holder.mNameTV.setTextColor(context.getResources().getColor(R.color.bright_purple));
         holder.mModeTV.setTextColor(context.getResources().getColor(R.color.bright_purple));
+
         holder.mContactImgv.setBackgroundResource(R.drawable.brightpurple_contact_icon);
         holder.mDeleteView.setOnClickListener(new View.OnClickListener() {
             @Override

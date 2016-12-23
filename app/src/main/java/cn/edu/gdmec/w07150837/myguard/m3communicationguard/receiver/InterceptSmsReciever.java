@@ -18,14 +18,16 @@ public class InterceptSmsReciever extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         // TODO: This method is called when the BroadcastReceiver is receiving
         // an Intent broadcast.
-        Log.d("test", "InterceptSmsReciever广播开启");
+        Log.d("test m3", "InterceptSmsReciever广播开启");
         SharedPreferences mSp = context.getSharedPreferences("config", Context.MODE_PRIVATE);
         boolean BlackNumStatus = mSp.getBoolean("BlackNumStatus", true);
         if (!BlackNumStatus) {
+            Log.d("test m3", "黑名单拦截关闭");
             //黑名单拦截关闭
             return;
         }
         //如果是黑名单,终止广播
+        Log.d("test m3", "是黑名单,终止广播");
         BlackNumberDao dao = new BlackNumberDao(context);
         Object[] objs = (Object[]) intent.getExtras().get("pdus");
         for (Object obj : objs) {
@@ -38,6 +40,7 @@ public class InterceptSmsReciever extends BroadcastReceiver {
             int mode = dao.getBlackContactMode(sender);
             if (mode == 2 || mode == 3) {
                 //需要拦截短信,拦截广播
+                Log.d("test m3", "需要拦截短信,拦截广播");
                 abortBroadcast();
             }
         }

@@ -55,8 +55,11 @@ public class ContactAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         holder.mNameTV.setText(contactInfos.get(position).name);
+        holder.mPhoneTV.setText(contactInfos.get(position).phone);
+
+        holder.mNameTV.setTextColor(context.getResources().getColor(R.color.bright_purple));
         holder.mPhoneTV.setTextColor(context.getResources().getColor(R.color.bright_purple));
-        holder.mPhoneTV.setTextColor(context.getResources().getColor(R.color.bright_purple));
+
         holder.mContactImgv.setBackgroundResource(R.drawable.brightpurple_contact_icon);
         return convertView;
     }
