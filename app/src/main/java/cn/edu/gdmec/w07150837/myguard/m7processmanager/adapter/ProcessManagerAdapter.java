@@ -106,6 +106,8 @@ public class ProcessManagerAdapter extends BaseAdapter {
             }
             holder.mCheckBox.setChecked(taskInfo.isChecked);
         }*/
+
+
         return converView;
     }
 
