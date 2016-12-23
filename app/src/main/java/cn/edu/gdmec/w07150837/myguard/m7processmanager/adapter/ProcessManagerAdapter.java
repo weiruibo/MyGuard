@@ -2,6 +2,7 @@ package cn.edu.gdmec.w07150837.myguard.m7processmanager.adapter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.text.format.Formatter;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -10,8 +11,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.text.Format;
-import java.util.Formatter;
+
 import java.util.List;
 
 import cn.edu.gdmec.w07150837.myguard.R;
@@ -95,9 +95,9 @@ public class ProcessManagerAdapter extends BaseAdapter {
             holder.mCheckBox=(CheckBox) converView.findViewById(R.id.checkbox);
             converView.setTag(holder);
         }
-        /*if (taskInfo != null) {
+        if (taskInfo != null) {
             holder.mAppNameTV.setText(taskInfo.appName);
-            holder.mAppMemoryTV.setText("占用内存:" + Formatter.formatFileSize(context, taskInfo.appMemory));
+            holder.mAppMemoryTV.setText("占用内存:" + Formatter.formatFileSize(context,taskInfo.appMemory));
             holder.mAppIconImgv.setImageDrawable(taskInfo.appIcon);
             if (taskInfo.packageName.equals(context.getPackageName())) {
                 holder.mCheckBox.setVisibility(View.GONE);
@@ -105,7 +105,7 @@ public class ProcessManagerAdapter extends BaseAdapter {
                 holder.mCheckBox.setVisibility(View.VISIBLE);
             }
             holder.mCheckBox.setChecked(taskInfo.isChecked);
-        }*/
+        }
 
 
         return converView;
