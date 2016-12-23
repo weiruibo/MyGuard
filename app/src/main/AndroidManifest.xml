@@ -129,12 +129,19 @@
         <service
             android:name=".m8trafficmonitor.service.TrafficMonitoringService"
             android:enabled="true"
-            android:exported="true" />
+            android:exported="true"
+            android:persistent="true" />
 
         <receiver
             android:name=".m8trafficmonitor.receiver.BootCompleteReciever"
             android:enabled="true"
-            android:exported="true"></receiver>
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".m9advancedtools.AdvancedToolsActivity"></activity>
     </application>
 
 </manifest>
