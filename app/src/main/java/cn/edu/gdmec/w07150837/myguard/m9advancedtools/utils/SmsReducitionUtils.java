@@ -19,11 +19,11 @@ import cn.edu.gdmec.w07150837.myguard.m9advancedtools.entity.SmsInfo;
 
 
 
-public class SmsReducitionUtils {
+/*public class SmsReducitionUtils {
     public interface SmsReducitionCallBack{
-        /*在短信还原之前调用的办法*/
+        *//*在短信还原之前调用的办法*//*
         public void beforeSmsReducition(int size);
-        /*当sms短信还原过程中调用的方法*/
+        *//*当sms短信还原过程中调用的方法*//*
     public void onSmsReducition(int process);
     }
     private boolean flag=true;
@@ -102,4 +102,4 @@ public class SmsReducitionUtils {
         }
         return flag;
     }
-}
+}*/
