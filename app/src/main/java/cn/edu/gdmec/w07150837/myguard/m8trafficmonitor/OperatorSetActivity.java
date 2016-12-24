@@ -38,6 +38,7 @@ public class OperatorSetActivity extends AppCompatActivity implements View.OnCli
         ((TextView) findViewById(R.id.tv_title)).setText("运营商信息设置");
         mLeftImgv.setOnClickListener(this);
         mLeftImgv.setImageResource(R.drawable.back);
+        mSelectSP= (Spinner) findViewById(R.id.spinner_operator_select);
         mSelectadapter = new ArrayAdapter(this, R.layout.item_spinner_operatorset, R.id
                 .tv_provice, operators);
         mSelectSP.setAdapter(mSelectadapter);
@@ -52,6 +53,7 @@ public class OperatorSetActivity extends AppCompatActivity implements View.OnCli
         switch (view.getId()) {
             case R.id.imgv_leftbtn:
                 editor.putBoolean("isset_operator", false);
+                finish();
                 break;
             case R.id.btn_operator_finish:
                 editor.putInt("operator", mSelectSP.getSelectedItemPosition() + 1);

@@ -46,6 +46,7 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
         setContentView(R.layout.activity_traffic_monitoring);
         mSP = getSharedPreferences("config", MODE_PRIVATE);
         boolean flag = mSP.getBoolean("isset_operator", false);
+        //如果没有设置营运商信息则进入信息设置页面
         if (!flag) {
             startActivity(new Intent(this, OperatorSetActivity.class));
             finish();
@@ -125,6 +126,7 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
                 finish();
                 break;
             case R.id.btn_correction_flow:
+                //首先判断是哪个运营商
                 int i = mSP.getInt("operator", 0);
                 SmsManager smsManager = SmsManager.getDefault();
                 switch (i) {
@@ -132,13 +134,16 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
                         Toast.makeText(this, "您还没有设置运营商信息", Toast.LENGTH_SHORT).show();
                         break;
                     case 1:
-
+                        //中国移动
                         break;
                     case 2:
-                        smsManager.sendTextMessage("10010", null, "LLCX", null, null);
+                        //中国联通
+                        //发送CXLL至10010
+                        //获取系统默认的短信管理器
+                        smsManager.sendTextMessage("10010", null, "CXLL", null, null);
                         break;
                     case 3:
-
+                        //中国电信
                         break;
 
                 }
@@ -157,16 +162,20 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
                 SmsMessage smsMessage = SmsMessage.createFromPdu((byte[]) obj);
                 String body = smsMessage.getMessageBody();
                 String address = smsMessage.getOriginatingAddress();
+                //一下短信分割只针对联通3G用户
                 if (!address.equals("10010")) {
                     return;
                 }
-
                 String[] split = body.split("，");
+                //本月剩余流量
                 long left = 0;
+                //本月已用流量
                 long used = 0;
+                //本月超出流量
                 long beyond = 0;
                 for (int i = 0; i < split.length; i++) {
                     if (split[i].contains("本月流量已使用")) {
+                        //套餐总量
                         String usedflow = split[i].substring(7, split[i].length());
                         used = getStringTofloat(usedflow);
                     } else if (split[i].contains("剩余流量")) {
@@ -190,6 +199,7 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
         }
     }
 
+    //将字符串转化成Float类型数据
     private long getStringTofloat(String str) {
         long flow = 0;
         if (!TextUtils.isEmpty(str)) {

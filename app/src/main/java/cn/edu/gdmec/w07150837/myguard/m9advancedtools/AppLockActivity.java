@@ -18,7 +18,7 @@ import cn.edu.gdmec.w07150837.myguard.R;
 import cn.edu.gdmec.w07150837.myguard.m9advancedtools.fragment.AppLockFragment;
 import cn.edu.gdmec.w07150837.myguard.m9advancedtools.fragment.AppUnLockFragment;
 
-/*public class AppLockActivity extends AppCompatActivity implements View.OnClickListener{
+ /*public class AppLockActivity extends AppCompatActivity implements View.OnClickListener{
     private ViewPager mAppViewPager;
     List<Fragment> mFragments=new ArrayList<Fragment>();
     private TextView mLockTV;
@@ -32,7 +32,7 @@ import cn.edu.gdmec.w07150837.myguard.m9advancedtools.fragment.AppUnLockFragment
         setContentView(R.layout.activity_app_lock);
         initView();
         initListener();
-    }
+   }
     private void initListener(){
         mAppViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener(){
 
