@@ -49,6 +49,9 @@ import cn.edu.gdmec.w07150837.myguard.m9advancedtools.widget.MyCircleProgress;
         mProgressButton=(MyCircleProgress)findViewById(R.id.mcp_smsbackup);
         mProgressButton.setOnClickListener(this);
     }
+
+
+
     protected void onDestroy(){
         flag=false;
         smsBackUpUtils.setFlag(flag);
