@@ -5,4 +5,9 @@ package cn.edu.gdmec.w07150837.myguard.m9advancedtools.entity;
  */
 
 public class SmsInfo {
+    public String body;
+    public String date;
+    public String type;
+    public String address;
+
 }
