@@ -15,6 +15,7 @@ import android.widget.GridView;
 import android.widget.Toast;
 
 import cn.edu.gdmec.w07150837.myguard.R;
+import cn.edu.gdmec.w07150837.myguard.m10settings.SettingsActivity;
 import cn.edu.gdmec.w07150837.myguard.m1home.adapter.HomeAdapter;
 import cn.edu.gdmec.w07150837.myguard.m2theftguard.LostFindActivity;
 import cn.edu.gdmec.w07150837.myguard.m2theftguard.dialog.InterPasswordDialog;
@@ -81,10 +82,10 @@ public class HomeActivity extends AppCompatActivity {
                         startActivity(TrafficMonitoringActivity.class);
                         break;
                     case 7:
-                        //      startActivity(AdvancedtoolsActivity.class);
+//                        startActivity(AdvancedtoolsActivity.class);
                         break;
                     case 8:
-                        //     startActivity(SettingsActivity.class);
+                        startActivity(SettingsActivity.class);
                         break;
                 }
             }

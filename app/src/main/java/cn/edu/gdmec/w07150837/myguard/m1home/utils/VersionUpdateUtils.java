@@ -96,7 +96,7 @@ public class VersionUpdateUtils {
             if (execute.getStatusLine().getStatusCode() == 200) {
 
                 HttpEntity entity = execute.getEntity();
-                String result = EntityUtils.toString(entity, "gbk");
+                String result = EntityUtils.toString(entity, "utf-8");
                 Log.d("update",result+"");
                 JSONObject jsonObject = new JSONObject(result);
                 versionEntity = new VersionEntity();

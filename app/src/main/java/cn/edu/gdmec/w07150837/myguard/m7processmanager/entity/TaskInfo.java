@@ -8,7 +8,7 @@ import android.graphics.drawable.Drawable;
 
 public class TaskInfo {
 
-    //真该运行的App信息
+    //正在运行的App信息
     public String appName;
     public long appMemory;
     /*用来标记app是否被选中*/
