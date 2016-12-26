@@ -7,7 +7,7 @@
     <declare-styleable name="MyCircleProgress">
         <attr name="progress" format="integer"></attr>
         <attr name="max" format="integer"></attr>
-        <attr name="circleColor" format="integer"></attr>
+        <attr name="circleColor" format="color"></attr>
         <attr name="progressColor" format="color"></attr>
         <attr name="android:background"></attr>
     </declare-styleable>
