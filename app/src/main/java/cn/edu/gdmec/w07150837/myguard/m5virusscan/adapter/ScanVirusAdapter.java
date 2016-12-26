@@ -44,6 +44,8 @@ public class ScanVirusAdapter extends BaseAdapter {
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
+
+
         ViewHolder holder;
         if (convertView == null) {
             convertView = View.inflate(context, R.layout.item_list_applock, null);
