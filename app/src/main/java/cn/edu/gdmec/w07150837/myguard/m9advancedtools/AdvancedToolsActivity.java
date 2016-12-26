@@ -11,7 +11,8 @@ import android.widget.TextView;
 import cn.edu.gdmec.w07150837.myguard.R;
 import cn.edu.gdmec.w07150837.myguard.m9advancedtools.db.dao.NumBelongtoDao;
 
-/*public class AdvancedToolsActivity extends AppCompatActivity implements View.OnClickListener{
+
+public class AdvancedToolsActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,22 +21,26 @@ import cn.edu.gdmec.w07150837.myguard.m9advancedtools.db.dao.NumBelongtoDao;
         setContentView(R.layout.activity_advanced_tools);
         initView();
     }
-    /*初始化控件*//*
+
+    /*初始化控件*/
     private void initView() {
-        findViewById(R.id.rl_titlebar).setBackgroundColor(
+        findViewById(R.id.r1_titlebar).setBackgroundColor(
                 getResources().getColor(R.color.bright_red));
         ImageView mLeftImgv = (ImageView) findViewById(R.id.imgv_leftbtn);
+
         ((TextView) findViewById(R.id.tv_title)).setText("高级工具");
         mLeftImgv.setOnClickListener(this);
         mLeftImgv.setImageResource(R.drawable.back);
+
         findViewById(R.id.advanceview_applock).setOnClickListener(this);
         findViewById(R.id.advanceview_numbelongs).setOnClickListener(this);
         findViewById(R.id.advanceview_smsbackup).setOnClickListener(this);
         findViewById(R.id.advanceview_smsreducition).setOnClickListener(this);
     }
+
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.imgv_leftbtn:
                 finish();
                 break;
@@ -49,17 +54,23 @@ import cn.edu.gdmec.w07150837.myguard.m9advancedtools.db.dao.NumBelongtoDao;
                 break;
             case R.id.advanceview_smsbackup:
                 //进入短信备份页面
-                startActivity(SMSReducitionActivity.class);
+                startActivity(SMSBackupActivity.class);
                 break;
             case R.id.advanceview_smsreducition:
                 //进入短信还原页面
                 startActivity(SMSReducitionActivity.class);
                 break;
+        }
     }
-    }
-    public void startActivity(Class<?> cls){
-        Intent intent=new Intent(this,cls);
+
+    /**
+     * 开启新的activity 不关闭自己
+     *
+     * @param cls 新的activity的字节码
+     */
+    public void startActivity(Class<?> cls) {
+        Intent intent = new Intent(this, cls);
         startActivity(intent);
     }
 
-}*/
+}

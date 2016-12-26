@@ -1,6 +1,7 @@
 package cn.edu.gdmec.w07150837.myguard.m9advancedtools;
 
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -18,13 +19,20 @@ import cn.edu.gdmec.w07150837.myguard.R;
 import cn.edu.gdmec.w07150837.myguard.m9advancedtools.fragment.AppLockFragment;
 import cn.edu.gdmec.w07150837.myguard.m9advancedtools.fragment.AppUnLockFragment;
 
- /*public class AppLockActivity extends AppCompatActivity implements View.OnClickListener{
+/**
+ * 程序锁
+ */
+public class AppLockActivity extends FragmentActivity implements View.OnClickListener {
+
     private ViewPager mAppViewPager;
-    List<Fragment> mFragments=new ArrayList<Fragment>();
+    List<Fragment> mFragments = new ArrayList<Fragment>();
+
     private TextView mLockTV;
     private TextView mUnLockTV;
+
     private View slideLockView;
     private View slideUnLockView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,19 +40,25 @@ import cn.edu.gdmec.w07150837.myguard.m9advancedtools.fragment.AppUnLockFragment
         setContentView(R.layout.activity_app_lock);
         initView();
         initListener();
-   }
-    private void initListener(){
-        mAppViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener(){
+    }
+
+
+    private void initListener() {
+        mAppViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
 
             @Override
-            public void onPageScrolled(int agr0) {
-                if(arg==0){
+            public void onPageSelected(int position) {
+                if (position == 0) {
                     slideUnLockView.setBackgroundResource(R.drawable.slide_view);
                     slideLockView.setBackgroundColor(getResources().getColor(R.color.transparent));
                     //未加锁
                     mLockTV.setTextColor(getResources().getColor(R.color.black));
                     mUnLockTV.setTextColor(getResources().getColor(R.color.bright_red));
-                }else {
+                } else {
                     slideLockView.setBackgroundResource(R.drawable.slide_view);
                     slideUnLockView.setBackgroundColor(getResources().getColor(R.color.transparent));
                     //已加锁
@@ -54,39 +68,41 @@ import cn.edu.gdmec.w07150837.myguard.m9advancedtools.fragment.AppUnLockFragment
             }
 
             @Override
-            public void onPageSelected(int arg0,float arg1,int arg2) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int arg0) {
+            public void onPageScrollStateChanged(int state) {
 
             }
         });
     }
 
-    private void intView(){
-        //findViewById(R.id.rl_titlebar).setBackgroundColor(getResources().getColor(R.color.bright_red));
-        ImageView mLeftImgv=(ImageView)findViewById(R.id.imgv_leftbtn);
-        ((TextView)findViewById(R.id.tv_title)).setText("程序锁");
+    private void initView() {
+        findViewById(R.id.r1_titlebar).setBackgroundColor(getResources().getColor(R.color.bright_red));
+
+        ImageView mLeftImgv = (ImageView) findViewById(R.id.imgv_leftbtn);
+        ((TextView) findViewById(R.id.tv_title)).setText("程序锁");
         mLeftImgv.setOnClickListener(this);
         mLeftImgv.setImageResource(R.drawable.back);
-        mAppViewPager=(ViewPager)findViewById(R.id.vp_applock);
-        mLockTV=(TextView)findViewById(R.id.tv_lock);
+        mAppViewPager = (ViewPager) findViewById(R.id.vp_applock);
+        mLockTV = (TextView) findViewById(R.id.tv_lock);
+        mUnLockTV = (TextView) findViewById(R.id.tv_unlock);
+
         mLockTV.setOnClickListener(this);
         mUnLockTV.setOnClickListener(this);
-        slideLockView=findViewById(R.id.view_slide_lock);
-        slideUnLockView=findViewById(R.id.view_slide_unlock);
-        AppUnLockFragment unLock=new AppUnLockFragment();
-        AppLockFragment lock=new AppLockFragment();
+
+        slideLockView = findViewById(R.id.view_slide_lock);
+        slideUnLockView = findViewById(R.id.view_slide_unlock);
+
+        AppUnLockFragment unLock = new AppUnLockFragment();
+        AppLockFragment lock = new AppLockFragment();
+
         mFragments.add(unLock);
         mFragments.add(lock);
         mAppViewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
 
     }
+
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.imgv_leftbtn:
                 finish();
                 break;
@@ -98,7 +114,8 @@ import cn.edu.gdmec.w07150837.myguard.m9advancedtools.fragment.AppUnLockFragment
                 break;
         }
     }
-    class MyAdapter extends  FragmentPagerAdapter{
+
+    class MyAdapter extends FragmentPagerAdapter {
 
 
         public MyAdapter(FragmentManager fm) {
@@ -115,4 +132,4 @@ import cn.edu.gdmec.w07150837.myguard.m9advancedtools.fragment.AppUnLockFragment
             return mFragments.size();
         }
     }
-}*/
+}

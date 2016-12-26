@@ -9,7 +9,7 @@
     <include layout="@layout/titlebar" />
 
     <cn.edu.gdmec.w07150837.myguard.m9advancedtools.widget.AdvancedToolsView
-        android:id="@+id/advanceview_numberlongs"
+        android:id="@+id/advanceview_numbelongs"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:gravity="center_vertical"
@@ -17,7 +17,7 @@
         custom_android:desc="号码归属地查询"></cn.edu.gdmec.w07150837.myguard.m9advancedtools.widget.AdvancedToolsView>
 
     <cn.edu.gdmec.w07150837.myguard.m9advancedtools.widget.AdvancedToolsView
-        android:id="@+id/adcanceview_smsbackup"
+        android:id="@+id/advanceview_smsbackup"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginTop="3dp"
@@ -27,7 +27,7 @@
 
 
     <cn.edu.gdmec.w07150837.myguard.m9advancedtools.widget.AdvancedToolsView
-        android:id="@+id/adcanceview_smsreducition"
+        android:id="@+id/advanceview_smsreducition"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginTop="3dp"
@@ -36,7 +36,7 @@
         custom_android:desc="短信还原"></cn.edu.gdmec.w07150837.myguard.m9advancedtools.widget.AdvancedToolsView>
 
     <cn.edu.gdmec.w07150837.myguard.m9advancedtools.widget.AdvancedToolsView
-        android:id="@+id/adcanceview_applock"
+        android:id="@+id/advanceview_applock"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginTop="3dp"

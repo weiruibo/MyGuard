@@ -34,6 +34,26 @@
             android:textSize="16sp" />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/graye5"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/view_slide_unlock"
+            style="@style/zero_widthwrapcontent"
+            android:layout_height="3dp"
+            android:background="@drawable/slide_view" />
+
+        <View
+            android:id="@+id/view_slide_lock"
+            style="@style/zero_widthwrapcontent"
+            android:layout_height="3dp"
+            android:layout_gravity="bottom" />
+
+    </LinearLayout>
+
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_applock"
         android:layout_width="match_parent"
