@@ -20,7 +20,7 @@ import cn.edu.gdmec.w07150837.myguard.m9advancedtools.db.dao.NumBelongtoDao;
         setContentView(R.layout.activity_advanced_tools);
         initView();
     }
-    *//*初始化控件*//*
+    /*初始化控件*//*
     private void initView() {
         findViewById(R.id.rl_titlebar).setBackgroundColor(
                 getResources().getColor(R.color.bright_red));

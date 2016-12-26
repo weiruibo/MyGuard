@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyGuard</string>
+    <string name="app_name">第8组MyGuard</string>
     <string name="action_setting">Settings</string>
     <string name="_sim_sim_bind_info">"     绑定SIM卡后,当再次重启手机时,若
     SIM卡信息发生变化,手机卫士会自动发送报警短信给安全号码!"</string>
