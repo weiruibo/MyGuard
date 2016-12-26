@@ -85,6 +85,7 @@ public class SystemInfoUtils {
         ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
         List<ActivityManager.RunningAppProcessInfo> runningAppProcessInfos = am.getRunningAppProcesses();
         int count = runningAppProcessInfos.size();
+
         return count;
     }
 

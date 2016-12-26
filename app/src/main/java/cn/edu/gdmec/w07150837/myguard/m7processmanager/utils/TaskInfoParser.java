@@ -49,13 +49,13 @@ public class TaskInfoParser {
             taskInfo.appMemory = memsize;
 
             try {
-                PackageInfo packageInfo = pm.getPackageInfo(packname, 0);
-                Drawable icon = packageInfo.applicationInfo.loadIcon(pm);
+                PackageInfo packInfo = pm.getPackageInfo(packname, 0);
+                Drawable icon = packInfo.applicationInfo.loadIcon(pm);
                 taskInfo.appIcon = icon;
-                String appname = packageInfo.applicationInfo.loadLabel(pm).toString();
+                String appname = packInfo.applicationInfo.loadLabel(pm).toString();
                 taskInfo.appName = appname;
 
-                if ((ApplicationInfo.FLAG_SYSTEM & packageInfo.applicationInfo.flags) != 0) {
+                if ((ApplicationInfo.FLAG_SYSTEM & packInfo.applicationInfo.flags) != 0) {
                     taskInfo.isUserApp = false;
                 } else {
                     taskInfo.isUserApp = true;
