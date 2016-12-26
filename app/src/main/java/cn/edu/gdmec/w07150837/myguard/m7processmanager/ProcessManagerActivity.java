@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.format.Formatter;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.AbsListView;
@@ -48,6 +49,7 @@ public class ProcessManagerActivity extends AppCompatActivity implements View.On
         setContentView(R.layout.activity_process_manager);
         initView();
         fillData();
+        Log.d("test","进程");
     }
 
     @Override
@@ -71,8 +73,8 @@ public class ProcessManagerActivity extends AppCompatActivity implements View.On
         mRightImgv.setOnClickListener(this);
         ((TextView) findViewById(R.id.tv_title)).setText("进程管理");
 
-        mMemoryTV = (TextView) findViewById(R.id.tv_memory_processmanager);
         mRunProcessNum = (TextView) findViewById(R.id.tv_runningprocess_num);
+        mMemoryTV = (TextView) findViewById(R.id.tv_memory_processmanager);
         mProcessNumTV = (TextView) findViewById(R.id.tv_user_runningprocess);
 
         runningPocessCount = SystemInfoUtils.getRunningPocessCount(ProcessManagerActivity.this);
@@ -135,17 +137,24 @@ public class ProcessManagerActivity extends AppCompatActivity implements View.On
 
         new Thread() {
             public void run() {
+
                 runningTaskInfos = TaskInfoParser.getRunningTaskInfos(getApplicationContext());
 
                 runOnUiThread(new Runnable() {
 
                     @Override
                     public void run() {
+                        Log.d("test",runningTaskInfos.toString()+"");
                         for (TaskInfo taskInfo : runningTaskInfos) {
                             if (taskInfo.isUserApp) {
                                 userTaskInfos.add(taskInfo);
+                                Log.d("userTaskInfos",taskInfo.appName);
+                                Log.d("userTaskInfos",taskInfo.appMemory+"");
+
                             } else {
                                 sysTaskInfo.add(taskInfo);
+                                Log.d("sysTaskInfo",taskInfo.appName);
+                                Log.d("sysTaskInfo",taskInfo.appMemory+"");
                             }
                         }
                         if (adapter == null) {
@@ -163,7 +172,6 @@ public class ProcessManagerActivity extends AppCompatActivity implements View.On
                 });
             }
 
-            ;
         }.start();
     }
 
@@ -216,7 +224,8 @@ public class ProcessManagerActivity extends AppCompatActivity implements View.On
         for (TaskInfo info : killedtaskInfos) {
             if (info.isUserApp) {
                 userTaskInfos.remove(info);
-            } else {
+            }
+            else {
                 sysTaskInfo.remove(info);
             }
         }
