@@ -7,9 +7,9 @@ import android.graphics.drawable.Drawable;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.StringTokenizer;
 
-import cn.edu.gdmec.w07150837.myguard.m4appmanager.entity.AppInfo;
+import cn.edu.gdmec.w07150837.myguard.m9advancedtools.entity.AppInfo;
+
 
 /**
  * Created by weiruibo on 12/23/16.
