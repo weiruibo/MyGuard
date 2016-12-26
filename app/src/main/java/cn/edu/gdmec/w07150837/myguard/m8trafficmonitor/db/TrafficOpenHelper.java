@@ -9,8 +9,10 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 
 public class TrafficOpenHelper extends SQLiteOpenHelper {
+
     private static final String DB_NAME = "traffic.db";
     private static final String TABLE_NAME = "traffic";
+    //流量
     private final static String GPRS = "gprs";
     private final static String TIME = "date";
 
@@ -22,7 +24,8 @@ public class TrafficOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table" + TABLE_NAME + "(id integer primary key autoincrement," + GPRS
+        db.execSQL("create table " + TABLE_NAME
+                + " (id integer primary key autoincrement," + GPRS
                 + " varchar(255)," + TIME + " datetime)");
 
     }

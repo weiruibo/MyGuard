@@ -35,10 +35,12 @@ public class App extends Application {
 
             String realsim = tm.getSimSerialNumber();
 
+            Log.d("App","当前手机Sim串号"+realsim);
+
             if (bindsim.equals(realsim)) {
-                Log.i("", "sim卡未发生变化,还是您的手机");
+                Log.i("App", "sim卡未发生变化,还是您的手机");
             } else {
-                Log.i("", "SIM卡变化了");
+                Log.i("App", "SIM卡变化了");
 
                 String safenumber = sp.getString("safephone", "");
 

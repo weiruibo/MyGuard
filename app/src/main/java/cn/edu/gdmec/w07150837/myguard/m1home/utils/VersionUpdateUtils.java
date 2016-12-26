@@ -91,12 +91,12 @@ public class VersionUpdateUtils {
             HttpConnectionParams.setConnectionTimeout(client.getParams(), 5000);
             HttpConnectionParams.setSoTimeout(client.getParams(), 5000);
 
-            HttpGet httpGet = new HttpGet("http://localhost/updateinfo.html");
+            HttpGet httpGet = new HttpGet("http://192.168.2.1/updateinfo.html");
             HttpResponse execute = client.execute(httpGet);
             if (execute.getStatusLine().getStatusCode() == 200) {
 
                 HttpEntity entity = execute.getEntity();
-                String result = EntityUtils.toString(entity, "gbk");
+                String result = EntityUtils.toString(entity, "utf-8");
                 Log.d("update",result+"");
                 JSONObject jsonObject = new JSONObject(result);
                 versionEntity = new VersionEntity();
@@ -151,6 +151,7 @@ public class VersionUpdateUtils {
     }
 
     private void initProgressDialog() {
+        Log.d("VersionUpdateUtils","下载提示");
         mProgressDialog = new ProgressDialog(context);
         mProgressDialog.setMessage("准备下载....");
         mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
@@ -158,16 +159,19 @@ public class VersionUpdateUtils {
     }
 
     protected void downloadNewApk(String apkurl) {
+        Log.d("VersionUpdateUtils","下载中...");
         DownloadUtils downloadUtils = new DownloadUtils();
         downloadUtils.downapk(apkurl, "/mnt/sdcard/mobilesafe2.0.apk", new MyCallBack() {
             @Override
             public void onSuccess(ResponseInfo<File> arg0) {
-                mProgressDialog.dismiss();
+                Log.d("VersionUpdateUtils","下载成功");
+                //mProgressDialog.dismiss();
                 MyUtils.installApk(context);
             }
 
             @Override
             public void onFailure(HttpException arg0, String arg1) {
+                Log.d("VersionUpdateUtils","下载失败");
                 mProgressDialog.setMessage("下载失败");
                 mProgressDialog.dismiss();
                 enterHome();
