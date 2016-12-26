@@ -145,6 +145,9 @@ public class AppUnLockFragment extends Fragment {
                     }
                 }.start();
 
+
+
+
             }
         });
 
