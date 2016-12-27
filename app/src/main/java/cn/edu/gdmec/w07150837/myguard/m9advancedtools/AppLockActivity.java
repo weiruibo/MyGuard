@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
@@ -32,6 +33,10 @@ public class AppLockActivity extends FragmentActivity implements View.OnClickLis
 
     private View slideLockView;
     private View slideUnLockView;
+    private MyAdapter myAdapter;
+
+    AppUnLockFragment unLock;
+    AppLockFragment lock;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,8 +74,13 @@ public class AppLockActivity extends FragmentActivity implements View.OnClickLis
 
             @Override
             public void onPageScrollStateChanged(int state) {
-
+                Log.d("test","华东");
+                lock.adapter.notifyDataSetChanged();
+                unLock.adapter.notifyDataSetChanged();
+                myAdapter.notifyDataSetChanged();
+                Log.d("test","gengxin");
             }
+
         });
     }
 
@@ -91,12 +101,14 @@ public class AppLockActivity extends FragmentActivity implements View.OnClickLis
         slideLockView = findViewById(R.id.view_slide_lock);
         slideUnLockView = findViewById(R.id.view_slide_unlock);
 
-        AppUnLockFragment unLock = new AppUnLockFragment();
-        AppLockFragment lock = new AppLockFragment();
+        unLock = new AppUnLockFragment();
+        lock = new AppLockFragment();
+
 
         mFragments.add(unLock);
         mFragments.add(lock);
-        mAppViewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
+        myAdapter = new MyAdapter(getSupportFragmentManager());
+        mAppViewPager.setAdapter(myAdapter);
 
     }
 

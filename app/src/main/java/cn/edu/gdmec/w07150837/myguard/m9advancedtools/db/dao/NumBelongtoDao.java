@@ -8,18 +8,29 @@ import android.text.TextUtils;
  * Created by weiruibo on 12/23/16.
  */
 
+/**
+ * 查询号码归属地的数据库逻辑类
+ */
 public class NumBelongtoDao {
 
+    /**
+     * 返回电话号码的归属地
+     *
+     * @param phonenumber 电话号码
+     * @return 归属地
+     */
     public static String getLocation(String phonenumber) {
 
         String location = phonenumber;
 
         SQLiteDatabase db = SQLiteDatabase.openDatabase("/data/data/cn.edu.gdmec.w07150837" +
                 ".myguard/files/address.db", null, SQLiteDatabase.OPEN_READONLY);
-        if (phonenumber.matches("^1[34578]\\d{9}$")) {
 
+        if (phonenumber.matches("^1[34578]\\d{9}$")) {
+            //手机号码的查询
             Cursor cursor = db.rawQuery("select location from data2 where id=(select outkey from " +
-                    "datal where id=?)", new String[]{phonenumber.substring(0, 7)});
+                    "data1 where id=?)", new String[]{phonenumber.substring(0, 7)});
+
             if (cursor.moveToNext()) {
                 location = cursor.getString(0);
             }

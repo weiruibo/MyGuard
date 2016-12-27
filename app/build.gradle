@@ -44,6 +44,7 @@ dependencies {
     compile files('libs/httpclient-4.5.2.jar')
     compile files('libs/httpcore-4.4.4.jar')
     compile 'com.google.android.gms:play-services-appindexing:8.1.0'
+    compile files('libs/app_process_library.jar')
 }
 
 
