@@ -13,6 +13,9 @@ import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.os.Debug;
 
+import com.jaredrummler.android.processes.ProcessManager;
+import com.jaredrummler.android.processes.models.AndroidAppProcess;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,9 +34,10 @@ public class TaskInfoParser {
      */
 
     public static List<TaskInfo> getRunningTaskInfos(Context context) {
+
+
         ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
         PackageManager pm = context.getPackageManager();
-
         List<ActivityManager.RunningAppProcessInfo> processInfos = am.getRunningAppProcesses();
         List<TaskInfo> taskInfos = new ArrayList<TaskInfo>();
 

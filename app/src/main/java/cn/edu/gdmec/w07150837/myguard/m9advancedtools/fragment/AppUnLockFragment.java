@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +34,7 @@ public class AppUnLockFragment extends Fragment {
     private TextView mUnLockTV;
     private ListView mUnLockLV;
     List<AppInfo> unlockApps = new ArrayList<AppInfo>();
-    private AppLockAdapter adapter;
+    public AppLockAdapter adapter;
     private AppLockDao dao;
     private Uri uri = Uri.parse("content://com.itcast.mobilesafe.applock");
     private List<AppInfo> appInfos;

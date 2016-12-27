@@ -42,7 +42,7 @@ public class AppLockDao {
 
     public boolean delete(String packagname) {
         SQLiteDatabase db = openHelper.getWritableDatabase();
-        int rownum = db.delete("applock", "packagname=?", new String[]{packagname});
+        int rownum = db.delete("applock", "packagename=?", new String[]{packagname});
         if (rownum == 0) {
             return false;
         } else {
