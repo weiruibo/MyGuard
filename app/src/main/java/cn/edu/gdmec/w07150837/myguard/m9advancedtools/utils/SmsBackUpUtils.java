@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Environment;
+import android.util.Log;
 import android.util.Xml;
 
 import org.xmlpull.v1.XmlSerializer;
@@ -61,9 +62,11 @@ public class SmsBackUpUtils {
             throws FileNotFoundException, IllegalStateException, IOException {
         XmlSerializer serializer = Xml.newSerializer();
         File sdDir = Environment.getExternalStorageDirectory();
+        Log.d("SmsBackUpUtils", "内存卡:" + sdDir.toString());
         long freesize = sdDir.getFreeSpace();
         if (Environment.getExternalStorageState().equals(
-                Environment.MEDIA_MOUNTED) && freesize > 10241 * 10241) {
+                Environment.MEDIA_MOUNTED) && freesize > 1024l * 1024l) {
+            Log.d("SmsBackUpUtils", "内存卡已装载");
             File file = new File(Environment.getExternalStorageDirectory(), "backup.xml");
 
             FileOutputStream os = new FileOutputStream(file);
@@ -78,9 +81,10 @@ public class SmsBackUpUtils {
                     "address", "body", "type", "date"}, null, null, null);
             //得到总的条目的个数
             int size = cursor.getCount();
+            Log.d("SmsBackUpUtils", "短信总个数"+size);
             //设置进度的总大小
             callback.beforeSmsBackup(size);
-            serializer.startTag(null, "sms");
+            serializer.startTag(null, "smss");
             serializer.attribute(null, "size", String.valueOf(size));
             int process = 0;
             while (cursor.moveToNext() & flag) {

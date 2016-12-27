@@ -27,7 +27,7 @@ public class InterceptSmsReciever extends BroadcastReceiver {
             return;
         }
         //如果是黑名单,终止广播
-        Log.d("test m3", "是黑名单,终止广播");
+        Log.d("test m3", "如果是黑名单,终止广播");
         BlackNumberDao dao = new BlackNumberDao(context);
         Object[] objs = (Object[]) intent.getExtras().get("pdus");
         for (Object obj : objs) {
@@ -42,6 +42,12 @@ public class InterceptSmsReciever extends BroadcastReceiver {
                 //需要拦截短信,拦截广播
                 Log.d("test m3", "需要拦截短信,拦截广播");
                 abortBroadcast();
+                if (getAbortBroadcast()) {
+                    Log.d("test m3", "拦截短信成功");
+                } else {
+                    Log.d("test m3", "拦截短信失败");
+                }
+
             }
         }
 
