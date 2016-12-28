@@ -3,9 +3,8 @@ package cn.edu.gdmec.w07150837.myguard.m9advancedtools;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
@@ -16,10 +15,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
 
 import cn.edu.gdmec.w07150837.myguard.R;
 import cn.edu.gdmec.w07150837.myguard.m2theftguard.utils.MD5Utils;
@@ -41,6 +36,7 @@ public class EnterPswActivity extends AppCompatActivity implements View.OnClickL
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_enter_psw);
 
+
         sp = getSharedPreferences("config", MODE_PRIVATE);
         password = sp.getString("PhoneAntiTheftPWD", null);
 
@@ -60,6 +56,7 @@ public class EnterPswActivity extends AppCompatActivity implements View.OnClickL
      * 初始化控件
      */
     private void initview() {
+
 
         mAppIcon = (ImageView) findViewById(R.id.imgv_appicon_enterpsw);
         mAppNameTV = (TextView) findViewById(R.id.tv_appname_enterpsw);

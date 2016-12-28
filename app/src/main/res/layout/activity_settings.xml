@@ -14,7 +14,7 @@
         android:id="@+id/sv_blacknumber_set"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        app:settitle="单名单拦截设置"
+        app:settitle="黑名单拦截设置"
         app:status_off="黑名单拦截已关闭"
         app:status_on="黑名单拦截已开启"></cn.edu.gdmec.w07150837.myguard.m10settings.widget.SettingView>
 
