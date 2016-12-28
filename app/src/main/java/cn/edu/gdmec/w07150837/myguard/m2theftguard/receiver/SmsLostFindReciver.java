@@ -31,7 +31,6 @@ public class SmsLostFindReciver extends BroadcastReceiver {
 
         boolean protecting = sharedPreferences.getBoolean("protecting", true);
         String password = sharedPreferences.getString("PhoneAntiTheftPWD", null);
-        Log.d("锁屏密码", password);
         Log.d("test", "开启安全号码");
         if (protecting) {
             Object[] objs = (Object[]) intent.getExtras().get("pdus");

@@ -5,12 +5,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.telephony.SmsManager;
 import android.telephony.SmsMessage;
 import android.text.TextUtils;
 import android.text.format.Formatter;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -27,6 +29,8 @@ import cn.edu.gdmec.w07150837.myguard.m8trafficmonitor.service.TrafficMonitoring
 import cn.edu.gdmec.w07150837.myguard.m8trafficmonitor.utils.SystemInfoUtils;
 
 public class TrafficMonitoringActivity extends AppCompatActivity implements View.OnClickListener {
+
+    String TAG = "m8trafficmonitoringActivity";
 
     private SharedPreferences mSP;
     private Button mCorrectFlowBtn;
@@ -114,6 +118,7 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
         IntentFilter filter = new IntentFilter();
         filter.addAction("android.provider.Telephony.SMS_RECEIVED");
         registerReceiver(receiver, filter);
+        Log.d(TAG, "注册短信广播成功");
 
     }
 
@@ -135,6 +140,7 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
                         break;
                     case 1:
                         //中国移动
+                        smsManager.sendTextMessage("10086", null, "CXLL", null, null);
                         break;
                     case 2:
                         //中国联通
@@ -154,49 +160,67 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
     }
 
     class CorrectFlowReceiver extends BroadcastReceiver {
+        String body;
+        String address;
 
         @Override
         public void onReceive(Context context, Intent intent) {
+            Log.d(TAG, "接收到短信广播");
             Object[] objs = (Object[]) intent.getExtras().get("pdus");
             for (Object obj : objs) {
                 SmsMessage smsMessage = SmsMessage.createFromPdu((byte[]) obj);
-                String body = smsMessage.getMessageBody();
-                String address = smsMessage.getOriginatingAddress();
+                body += smsMessage.getMessageBody();
+                address = smsMessage.getOriginatingAddress();
                 //一下短信分割只针对联通3G用户
-                if (!address.equals("10010")) {
-                    return;
-                }
-                String[] split = body.split("，");
+                //  Log.d(TAG,body);
+
+            }
+
+            if (address.equals("10010")) {
+                // Log.d("m8trafficmonitoringActivity", body + "");
+                String[] split = body.split("；");
                 //本月剩余流量
-                long left = 0;
+                long out = 0;
+                long in = 0;
                 //本月已用流量
-                long used = 0;
+                long totalUsed = 0;
                 //本月超出流量
                 long beyond = 0;
                 for (int i = 0; i < split.length; i++) {
-                    if (split[i].contains("本月流量已使用")) {
+                    Log.d("m8" + i, split[i]);
+                    if (split[i].contains("本月总流量已用")) {
                         //套餐总量
-                        String usedflow = split[i].substring(7, split[i].length());
-                        used = getStringTofloat(usedflow);
-                    } else if (split[i].contains("剩余流量")) {
-                        String leftflow = split[i].substring(4, split[i].length());
-                        left = getStringTofloat(leftflow);
-                    } else if (split[i].contains("套餐外流量")) {
-                        String beyondflow = split[i].substring(5, split[i].length());
+                        String usedflow = split[i].substring(split[i].lastIndexOf("：") + 8, split[i].length());
+                        totalUsed = getStringTofloat(usedflow);
+                        Log.d(TAG + "本月总流量已用", usedflow);
+                    } else if (split[i].contains("省外流量")) {
+                        String outflow = split[i].substring(split[i].lastIndexOf("，") + 3, split[i].length());
+                        out = getStringTofloat(outflow);
+                        Log.d(TAG + "省外流量", outflow + "");
+                    } else if (split[i].contains("定向流量")) {
+                        String inflow = split[i].substring(split[i].lastIndexOf("，") + 3, split[i].length());
+                        in = getStringTofloat(inflow);
+                        Log.d(TAG + "定向流量", inflow + "");
+
+                    } else if (split[i].contains("套餐外收费流量已用")) {
+                        String beyondflow = split[i].substring(9, split[i].length());
                         beyond = getStringTofloat(beyondflow);
+                        Log.d(TAG + "套餐外收费流量已用", beyondflow);
 
                     }
+
                 }
                 SharedPreferences.Editor edit = mSP.edit();
-                edit.putLong("totalflow", used + left);
-                edit.putLong("usedflow", used + beyond);
+                edit.putLong("totalflow", totalUsed + out + in);
+                edit.putLong("usedflow", totalUsed);
                 edit.commit();
-                mTotalTV.setText("本月流量：" + Formatter.formatFileSize(context, (used + left)));
-                mUsedTV.setText("本月已用：" + Formatter.formatFileSize(context, (used + beyond)));
+                mTotalTV.setText("本月流量：" + Formatter.formatFileSize(context, (totalUsed + out + in)));
+                mUsedTV.setText("本月已用：" + Formatter.formatFileSize(context, (totalUsed)));
 
             }
 
         }
+
     }
 
     //将字符串转化成Float类型数据

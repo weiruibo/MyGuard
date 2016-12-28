@@ -37,6 +37,7 @@ import cn.edu.gdmec.w07150837.myguard.m1home.entity.VersionEntity;
 
 public class VersionUpdateUtils {
 
+    String TAG = "mhome";
     private static final int MESSAGE_NET_EEOR = 101;
     private static final int MESSAGE_IO_EEOR = 102;
     private static final int MESSAGE_JSON_EEOR = 103;
@@ -91,13 +92,14 @@ public class VersionUpdateUtils {
             HttpConnectionParams.setConnectionTimeout(client.getParams(), 5000);
             HttpConnectionParams.setSoTimeout(client.getParams(), 5000);
 
-            HttpGet httpGet = new HttpGet("http://192.168.2.1/updateinfo.html");
+            HttpGet httpGet = new HttpGet("http://weiruibo.s1.natapp.cc/updateinfo.html");
             HttpResponse execute = client.execute(httpGet);
             if (execute.getStatusLine().getStatusCode() == 200) {
 
                 HttpEntity entity = execute.getEntity();
                 String result = EntityUtils.toString(entity, "utf-8");
-                Log.d("update",result+"");
+                Log.d(TAG, result);
+                Log.d("update", result + "");
                 JSONObject jsonObject = new JSONObject(result);
                 versionEntity = new VersionEntity();
                 String code = jsonObject.getString("code");
@@ -109,6 +111,8 @@ public class VersionUpdateUtils {
                 if (!mVersion.equals(versionEntity.versioncode)) {
                     handler.sendEmptyMessage(MESSAGE_SHOW_DIALOG);
                 }
+            }else{
+                enterHome();
             }
 
         } catch (ClientProtocolException e) {
@@ -151,7 +155,7 @@ public class VersionUpdateUtils {
     }
 
     private void initProgressDialog() {
-        Log.d("VersionUpdateUtils","下载提示");
+        Log.d("VersionUpdateUtils", "下载提示");
         mProgressDialog = new ProgressDialog(context);
         mProgressDialog.setMessage("准备下载....");
         mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
@@ -159,19 +163,19 @@ public class VersionUpdateUtils {
     }
 
     protected void downloadNewApk(String apkurl) {
-        Log.d("VersionUpdateUtils","下载中...");
+        Log.d("VersionUpdateUtils", "下载中...");
         DownloadUtils downloadUtils = new DownloadUtils();
         downloadUtils.downapk(apkurl, "/mnt/sdcard/mobilesafe2.0.apk", new MyCallBack() {
             @Override
             public void onSuccess(ResponseInfo<File> arg0) {
-                Log.d("VersionUpdateUtils","下载成功");
-                //mProgressDialog.dismiss();
+                Log.d("VersionUpdateUtils", "下载成功");
+                mProgressDialog.dismiss();
                 MyUtils.installApk(context);
             }
 
             @Override
             public void onFailure(HttpException arg0, String arg1) {
-                Log.d("VersionUpdateUtils","下载失败");
+                Log.d("VersionUpdateUtils", "下载失败");
                 mProgressDialog.setMessage("下载失败");
                 mProgressDialog.dismiss();
                 enterHome();
