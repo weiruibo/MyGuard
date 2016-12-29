@@ -91,7 +91,6 @@ public class VersionUpdateUtils {
             HttpClient client = new DefaultHttpClient();
             HttpConnectionParams.setConnectionTimeout(client.getParams(), 5000);
             HttpConnectionParams.setSoTimeout(client.getParams(), 5000);
-
             HttpGet httpGet = new HttpGet("http://weiruibo.s1.natapp.cc/updateinfo.html");
             HttpResponse execute = client.execute(httpGet);
             if (execute.getStatusLine().getStatusCode() == 200) {
@@ -111,7 +110,7 @@ public class VersionUpdateUtils {
                 if (!mVersion.equals(versionEntity.versioncode)) {
                     handler.sendEmptyMessage(MESSAGE_SHOW_DIALOG);
                 }
-            }else{
+            } else {
                 enterHome();
             }
 
@@ -135,13 +134,24 @@ public class VersionUpdateUtils {
         builder.setMessage(versionEntity.description);
         builder.setCancelable(false);
         builder.setIcon(R.mipmap.ic_launcher);
-        builder.setPositiveButton("立即升级", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                initProgressDialog();
-                downloadNewApk(versionEntity.apkurl);
-            }
-        });
+        if (versionEntity.versioncode.contains("null")) {
+            builder.setPositiveButton("进入", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.dismiss();
+                    enterHome();
+                }
+            });
+        } else {
+            builder.setPositiveButton("立即升级", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    initProgressDialog();
+                    downloadNewApk(versionEntity.apkurl);
+                }
+            });
+        }
+
 
         builder.setNegativeButton("暂不升级", new DialogInterface.OnClickListener() {
             @Override

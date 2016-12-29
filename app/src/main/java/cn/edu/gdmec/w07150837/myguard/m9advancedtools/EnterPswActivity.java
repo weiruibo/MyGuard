@@ -80,10 +80,10 @@ public class EnterPswActivity extends AppCompatActivity implements View.OnClickL
                         if (MD5Utils.encode(inputpsw).equals(password)) {
                             //发送自定义的广播消息
                             Intent intent = new Intent();
-                            intent.setAction("cn.itcast.mobliesafe.applock");
+                            intent.setAction("cn.edu.gdmec.w07150837.myguard.applock");
                             intent.putExtra("packagename", packagename);
                             sendBroadcast(intent);
-                            finish();
+                            this.finish();
                         } else {
                             startAnim();
                             Toast.makeText(this, "密码不正确", Toast.LENGTH_SHORT).show();

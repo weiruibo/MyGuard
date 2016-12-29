@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:custom_android="http://schemas.android.com/apk/res/cn.edu.gdmec.w07150837.myguard"
+    xmlns:custom_android="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_advanced_tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"

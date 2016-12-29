@@ -92,7 +92,7 @@ public class AppLockService extends Service {
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            if ("cn.itcast.mobliesafe.applock".equals(intent.getAction())) {
+            if ("cn.edu.gdmec.w07150837.myguard.applock".equals(intent.getAction())) {
                 tempStopProtectPackname = intent.getStringExtra("packagename");
             } else if (Intent.ACTION_SCREEN_OFF.equals(intent.getAction())) {
                 tempStopProtectPackname = null;

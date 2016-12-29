@@ -74,11 +74,11 @@ public class AppLockActivity extends FragmentActivity implements View.OnClickLis
 
             @Override
             public void onPageScrollStateChanged(int state) {
-                Log.d("test","华东");
-                lock.adapter.notifyDataSetChanged();
-                unLock.adapter.notifyDataSetChanged();
-                myAdapter.notifyDataSetChanged();
-                Log.d("test","gengxin");
+//                Log.d("test","华东");
+//                lock.adapter.notifyDataSetChanged();
+//                unLock.adapter.notifyDataSetChanged();
+//                myAdapter.notifyDataSetChanged();
+//                Log.d("test","gengxin");
             }
 
         });

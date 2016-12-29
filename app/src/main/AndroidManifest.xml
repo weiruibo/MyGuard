@@ -126,9 +126,9 @@
             android:exported="true" />
 
         <activity android:name=".m8trafficmonitor.OperatorSetActivity" />
-        <activity android:name=".m8trafficmonitor.TrafficMonitoringActivity" />
-
-        <service
+        <activity android:name =".m8trafficmonitor.TrafficMonitoringActivity" />
+        \
+        <A座线程service
             android:name=".m8trafficmonitor.service.TrafficMonitoringService"
             android:enabled="true"
             android:exported="true"
@@ -150,7 +150,7 @@
         <activity android:name=".m9advancedtools.SMSBackupActivity" />
         <activity android:name=".m9advancedtools.SMSReducitionActivity" />
 
-        <service
+            <service
             android:name=".m9advancedtools.service.AppLockService"
             android:enabled="true"
             android:exported="true"

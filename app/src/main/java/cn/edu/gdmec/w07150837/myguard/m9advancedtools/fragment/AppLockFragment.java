@@ -36,7 +36,7 @@ public class AppLockFragment extends Fragment {
     private AppLockDao dao;
     List<AppInfo> mLockApps = new ArrayList<AppInfo>();
     public AppLockAdapter adapter;
-    private Uri uri = Uri.parse("content://com.itcast.mobilesafe.applock");
+    private Uri uri = Uri.parse("content://cn.edu.gdmec.w07150837.myguard.applock");
     private Handler mHandler = new Handler() {
 
         @Override

@@ -16,8 +16,9 @@ import cn.edu.gdmec.w07150837.myguard.m9advancedtools.entity.AppInfo;
  */
 /*工具类用来获取应用信息，此类重复*/
 public class AppInfoParser {
+
   public static List<AppInfo> getAppInfos(Context context){
-      //得到一个java保证的 包管理器
+      //得到一个包管理器
       PackageManager pm=context.getPackageManager();
       List<PackageInfo> packInfos=pm.getInstalledPackages(0);
       List<AppInfo> appinfos=new ArrayList<AppInfo>();

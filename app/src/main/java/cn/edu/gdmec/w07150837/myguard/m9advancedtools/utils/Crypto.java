@@ -56,12 +56,13 @@ public class Crypto {
     }
 
     private static byte[] encrypt(byte[] raw, byte[] plain) throws Exception {
+
         SecretKeySpec keySpec = new SecretKeySpec(raw, "AES");
 
         Cipher cipher = Cipher.getInstance("AES");
-        cipher.init(Cipher.DECRYPT_MODE, keySpec);
-        byte[] result = Base64.encode(plain, Base64.DEFAULT);
-        byte[] encrypted = cipher.doFinal(result);
+        cipher.init(Cipher.ENCRYPT_MODE, keySpec);
+        //byte[] result = Base64.encode(plain, Base64.DEFAULT);
+        byte[] encrypted = cipher.doFinal(plain);
         return encrypted;
     }
 

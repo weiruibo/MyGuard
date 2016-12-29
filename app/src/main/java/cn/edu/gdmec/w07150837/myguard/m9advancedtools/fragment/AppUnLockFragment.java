@@ -36,7 +36,7 @@ public class AppUnLockFragment extends Fragment {
     List<AppInfo> unlockApps = new ArrayList<AppInfo>();
     public AppLockAdapter adapter;
     private AppLockDao dao;
-    private Uri uri = Uri.parse("content://com.itcast.mobilesafe.applock");
+    private Uri uri = Uri.parse("content://cn.edu.gdmec.w07150837.myguard.applock");
     private List<AppInfo> appInfos;
     private Handler mHandler = new Handler() {
         @Override
@@ -44,7 +44,7 @@ public class AppUnLockFragment extends Fragment {
             switch (msg.what) {
                 case 100:
                     unlockApps.clear();
-                    unlockApps.addAll((List<AppInfo>) msg.obj);
+                    unlockApps.addAll(((List<AppInfo>) msg.obj));
                     if (adapter == null) {
                         adapter = new AppLockAdapter(unlockApps, getActivity());
                         mUnLockLV.setAdapter(adapter);
@@ -116,7 +116,7 @@ public class AppUnLockFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, final int position,
                                     long id) {
 
-                if (unlockApps.get(position).packageName.equals("cn.itcast.mobliesafe")) {
+                if (unlockApps.get(position).packageName.equals("content://cn.edu.gdmec.w07150837.myguard")) {
                     return;
                 }
 

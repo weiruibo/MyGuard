@@ -23,7 +23,9 @@ import java.io.IOException;
  * 短信的工具类，提供短信备份API
  */
 public class SmsBackUpUtils {
-    //*定义的一个接口，用作回调*//
+    /**
+     * 定义的一个接口，用作回调
+     */
 
     public interface BackupStatusCallBack {
 
@@ -81,7 +83,7 @@ public class SmsBackUpUtils {
                     "address", "body", "type", "date"}, null, null, null);
             //得到总的条目的个数
             int size = cursor.getCount();
-            Log.d("SmsBackUpUtils", "短信总个数"+size);
+            Log.d("SmsBackUpUtils", "短信总个数" + size);
             //设置进度的总大小
             callback.beforeSmsBackup(size);
             serializer.startTag(null, "smss");
