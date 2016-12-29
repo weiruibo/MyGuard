@@ -51,7 +51,8 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onStart() {
         running = SystemInfoUtils.isServiceRunning(this, "cn.edu.gdmec.w07150837.myguard.m9advancedtools.service.AppLockService");
-        mAppLockSV.setChecked(mSP.getBoolean("AppLockStatus",false));
+        //mAppLockSV.setChecked(mSP.getBoolean("AppLockStatus",false));
+        mAppLockSV.setChecked(running);
         mBlackNumSV.setChecked(mSP.getBoolean("BlackNumStatus", true));
         super.onStart();
     }
@@ -75,6 +76,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                 saveStatus("AppLockStatus", isChedked);
                 intent = new Intent(this, AppLockService.class);
                 if (isChedked) {
+                    intent=new Intent(this,AppLockService.class);
                     startService(intent);
                 } else {
                     stopService(intent);
