@@ -31,7 +31,8 @@
         android:layout_margin="5dp"
         android:layout_below="@+id/tv_appname_processmana"
         android:layout_toRightOf="@+id/imgv_appicon_processmana"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        android:layout_width="wrap_content" />
 
     <CheckBox
         android:id="@+id/checkbox"

@@ -2,7 +2,11 @@ package cn.edu.gdmec.w07150837.myguard.m7processmanager.utils;
 
 import android.app.ActivityManager;
 import android.content.Context;
+import android.util.Log;
 import android.view.accessibility.AccessibilityManager;
+
+import com.jaredrummler.android.processes.ProcessManager;
+import com.jaredrummler.android.processes.models.AndroidAppProcess;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -31,8 +35,10 @@ public class SystemInfoUtils {
     public static boolean isServiceRunning(Context context, String className) {
         ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
         List<ActivityManager.RunningServiceInfo> infos = am.getRunningServices(200);
+
         for (ActivityManager.RunningServiceInfo info : infos) {
             String serviceClassName = info.service.getClassName();
+            Log.d("m7SystemInfoUtils", serviceClassName);
             if (className.equals(serviceClassName)) {
                 return true;
             }
@@ -83,7 +89,8 @@ public class SystemInfoUtils {
      */
     public static int getRunningPocessCount(Context context) {
         ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
-        List<ActivityManager.RunningAppProcessInfo> runningAppProcessInfos = am.getRunningAppProcesses();
+        //List<ActivityManager.RunningAppProcessInfo> runningAppProcessInfos = am.getRunningAppProcesses();
+        List<AndroidAppProcess> runningAppProcessInfos = ProcessManager.getRunningAppProcesses();
         int count = runningAppProcessInfos.size();
 
         return count;

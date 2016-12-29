@@ -49,7 +49,7 @@ public class ProcessManagerActivity extends AppCompatActivity implements View.On
         setContentView(R.layout.activity_process_manager);
         initView();
         fillData();
-        Log.d("test","进程");
+        Log.d("test", "进程");
     }
 
     @Override
@@ -144,18 +144,19 @@ public class ProcessManagerActivity extends AppCompatActivity implements View.On
 
                     @Override
                     public void run() {
-                        Log.d("test",runningTaskInfos.toString()+"");
+                        Log.d("test", runningTaskInfos.toString() + "");
                         for (TaskInfo taskInfo : runningTaskInfos) {
                             if (taskInfo.isUserApp) {
                                 userTaskInfos.add(taskInfo);
-                                Log.d("userTaskInfos",taskInfo.appName);
-                                Log.d("userTaskInfos",taskInfo.appMemory+"");
+                                Log.d("userTaskInfos", taskInfo.appName);
+                                Log.d("userTaskInfos", taskInfo.appMemory + "");
 
                             } else {
                                 sysTaskInfo.add(taskInfo);
-                                Log.d("sysTaskInfo",taskInfo.appName);
-                                Log.d("sysTaskInfo",taskInfo.appMemory+"");
+                                Log.d("sysTaskInfo", taskInfo.appName);
+                                Log.d("sysTaskInfo", taskInfo.appMemory + "");
                             }
+                            Log.d("m7", taskInfo.appName);
                         }
                         if (adapter == null) {
                             adapter = new ProcessManagerAdapter(getApplicationContext(), userTaskInfos, sysTaskInfo);
@@ -224,8 +225,7 @@ public class ProcessManagerActivity extends AppCompatActivity implements View.On
         for (TaskInfo info : killedtaskInfos) {
             if (info.isUserApp) {
                 userTaskInfos.remove(info);
-            }
-            else {
+            } else {
                 sysTaskInfo.remove(info);
             }
         }
@@ -246,7 +246,7 @@ public class ProcessManagerActivity extends AppCompatActivity implements View.On
     * 反选*/
     private void inverse() {
 
-        for (TaskInfo taskInfo:userTaskInfos){
+        for (TaskInfo taskInfo : userTaskInfos) {
             //就是本应用程序
             if (taskInfo.packageName.equals(getPackageName())) {
                 continue;
@@ -256,7 +256,7 @@ public class ProcessManagerActivity extends AppCompatActivity implements View.On
         }
         for (TaskInfo taskInfo : sysTaskInfo) {
             boolean checked = taskInfo.isChecked;
-            taskInfo.isChecked=!checked;
+            taskInfo.isChecked = !checked;
         }
         adapter.notifyDataSetChanged();
     }

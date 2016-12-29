@@ -26,8 +26,8 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.WRITE_SMS" />
-<uses-permission android:name="android.permission.GET_TASKS"/>
-    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
 
     <application
         android:name=".App"
@@ -126,7 +126,7 @@
             android:exported="true" />
 
         <activity android:name=".m8trafficmonitor.OperatorSetActivity" />
-        <activity android:name =".m8trafficmonitor.TrafficMonitoringActivity" />
+        <activity android:name=".m8trafficmonitor.TrafficMonitoringActivity" />
         \
         <A座线程service
             android:name=".m8trafficmonitor.service.TrafficMonitoringService"
@@ -150,7 +150,7 @@
         <activity android:name=".m9advancedtools.SMSBackupActivity" />
         <activity android:name=".m9advancedtools.SMSReducitionActivity" />
 
-            <service
+        <service
             android:name=".m9advancedtools.service.AppLockService"
             android:enabled="true"
             android:exported="true"

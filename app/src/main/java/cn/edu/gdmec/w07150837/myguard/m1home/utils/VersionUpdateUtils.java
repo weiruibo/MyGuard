@@ -150,16 +150,15 @@ public class VersionUpdateUtils {
                     downloadNewApk(versionEntity.apkurl);
                 }
             });
+            builder.setNegativeButton("暂不升级", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int i) {
+                    dialog.dismiss();
+                    enterHome();
+                }
+            });
+
         }
-
-
-        builder.setNegativeButton("暂不升级", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int i) {
-                dialog.dismiss();
-                enterHome();
-            }
-        });
         builder.show();
 
     }
